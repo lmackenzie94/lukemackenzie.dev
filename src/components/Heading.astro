@@ -1,0 +1,22 @@
+---
+type Heading = 'h1' | 'h2' | 'h3';
+
+interface Props {
+  type: Heading;
+  size: 'sm' | 'md' | 'lg';
+}
+
+const { type, size } = Astro.props as Props;
+
+const Tag = type as Heading;
+
+const VARIANTS = {
+  sm: 'text-md',
+  md: 'text-xl',
+  lg: 'text-3xl'
+};
+---
+
+<Tag class=`font-bold ${VARIANTS[size]}`>
+  <slot />
+</Tag>
