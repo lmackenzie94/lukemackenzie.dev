@@ -3,7 +3,7 @@ type Heading = 'h1' | 'h2' | 'h3';
 
 interface Props {
   type: Heading;
-  size: 'sm' | 'md' | 'lg';
+  size: 'sm' | 'md' | 'lg' | 'xl';
 }
 
 const { type, size } = Astro.props as Props;
@@ -13,7 +13,8 @@ const Tag = type as Heading;
 const VARIANTS = {
   sm: 'text-md',
   md: 'text-xl',
-  lg: 'text-3xl'
+  lg: 'text-3xl',
+  xl: 'text-5xl'
 };
 ---
 

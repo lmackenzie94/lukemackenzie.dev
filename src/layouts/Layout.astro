@@ -1,25 +1,22 @@
 ---
 import Header from '../components/Header.astro';
 import BaseHead from '../components/BaseHead.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config.js';
 
 interface Props {
-	title?: string;
-	description?: string;
+  pageTitle?: string;
+  pageDescription?: string;
 }
 
-
-const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+const { pageTitle, pageDescription } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
-	<body>
-		<Header title={title} />
-		<slot />
-	</body>
+  <head>
+    <BaseHead pageTitle={pageTitle} pageDescription={pageDescription} />
+  </head>
+  <body>
+    <Header title="Luke MacKenzie." />
+    <slot />
+  </body>
 </html>
-
