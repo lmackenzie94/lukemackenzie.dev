@@ -1,0 +1,40 @@
+---
+import Section from '../../components/Section.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// returns an array of page routes, and all of the pages at those routes will use the same template defined in the file
+export async function getStaticPaths() {
+  const allProjects = await Astro.glob('../projects/*.md');
+
+  const uniqueTags = [
+    ...new Set(allProjects.map(project => project.frontmatter.tags).flat())
+  ];
+
+  return uniqueTags.map(tag => {
+    const filteredProjects = allProjects.filter(project =>
+      project.frontmatter.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { projects: filteredProjects }
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { projects } = Astro.props;
+---
+
+<BaseLayout pageTitle={`Tag: ${tag}`}>
+  <Section>
+    <p>Projects tagged with {tag}</p>
+
+    {
+      projects.map(project => (
+        <li>
+          <a href={project.url}>{project.frontmatter.title}</a>
+        </li>
+      ))
+    }
+  </Section>
+</BaseLayout>

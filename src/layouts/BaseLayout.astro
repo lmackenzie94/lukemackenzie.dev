@@ -1,8 +1,9 @@
 ---
 import Header from '../components/Header.astro';
 import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
 
-interface Props {
+export interface Props {
   pageTitle?: string;
   pageDescription?: string;
 }
@@ -18,5 +19,6 @@ const { pageTitle, pageDescription } = Astro.props;
   <body>
     <Header title="Luke MacKenzie." />
     <slot />
+    <Footer />
   </body>
 </html>

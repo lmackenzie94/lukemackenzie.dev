@@ -1,12 +1,15 @@
 ---
 import Heading from '../components/Heading.astro';
-import Layout from '../layouts/Layout.astro';
+import ProjectList from '../components/ProjectList.astro';
+import Section from '../components/Section.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const PAGE_TITLE = 'Projects';
 ---
 
-<Layout pageTitle={PAGE_TITLE}>
-  <section class="container section">
+<BaseLayout pageTitle={PAGE_TITLE}>
+  <Section>
     <Heading type="h1" size="xl">{PAGE_TITLE}</Heading>
-  </section>
-</Layout>
+    <ProjectList />
+  </Section>
+</BaseLayout>

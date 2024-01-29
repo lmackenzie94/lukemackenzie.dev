@@ -1,0 +1,16 @@
+---
+import Heading from './Heading.astro';
+import Section from './Section.astro';
+
+const allProjects = await Astro.glob('../pages/projects/*.md');
+---
+
+<ul>
+  {
+    allProjects.map(project => (
+      <li>
+        <a href={project.url}>{project.frontmatter.title}</a>
+      </li>
+    ))
+  }
+</ul>

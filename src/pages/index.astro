@@ -1,15 +1,17 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Projects from '../components/Projects.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectList from '../components/ProjectList.astro';
 import Button from '../components/Button.astro';
+import Section from '../components/Section.astro';
+import Heading from '../components/Heading.astro';
 
 const PAGE_TITLE = 'Home';
 ---
 
-<Layout pageTitle={PAGE_TITLE}>
+<BaseLayout pageTitle={PAGE_TITLE}>
   <main>
     <div class="bg-primary">
-      <div class="container section">
+      <Section>
         <h2
           class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
         >
@@ -24,8 +26,11 @@ const PAGE_TITLE = 'Home';
           ipsum.
         </p>
         <Button variant="tertiary" class="mt-6">Do Something</Button>
-      </div>
+      </Section>
     </div>
   </main>
-  <Projects />
-</Layout>
+  <Section>
+    <Heading type="h2" size="lg">Projects.</Heading>
+    <ProjectList />
+  </Section>
+</BaseLayout>

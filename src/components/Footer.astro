@@ -1,0 +1,17 @@
+---
+import Section from './Section.astro';
+import Social from './Social.astro';
+---
+
+<style>
+  footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>
+
+<Section as="footer">
+  <Social platform="github" username="lmackenzie94" />
+  <Social platform="linkedin" username="lmackenzie94" />
+</Section>

@@ -1,0 +1,35 @@
+---
+interface Props {
+  as?: keyof HTMLElementTagNameMap; // any valid HTML tag name
+}
+
+const { as: element = 'section' } = Astro.props as Props;
+
+const Tag = element;
+
+const paddingY = '4rem';
+---
+
+<Tag class="container section">
+  <slot />
+</Tag>
+
+<style define:vars={{ paddingY }}>
+  :root {
+    --minPadding: 2rem;
+    --maxPadding: 4rem;
+    --idealPadding: 5vw;
+    --paddingY: clamp(
+      var(--minPadding),
+      var(--idealPadding),
+      var(--maxPadding)
+    );
+  }
+
+  .section {
+    /* TODO: why doesn't this work */
+    /* padding: var(--paddingY) 0; */
+    padding-top: var(--paddingY);
+    padding-bottom: var(--paddingY);
+  }
+</style>
