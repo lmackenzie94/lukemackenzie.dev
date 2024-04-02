@@ -2,28 +2,21 @@
 import type { InferGetStaticParamsType, InferGetStaticPropsType } from 'astro';
 import Section from '../../components/Section.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-export interface Project {
-  frontmatter: {
-    title: string;
-    tags: string[];
-  };
-  url: string;
-}
+import { getCollection } from 'astro:content';
 
 // returns an array of page routes, and all of the pages at those routes will use the same template defined in the file
 export async function getStaticPaths() {
-  const allProjects: any = await Astro.glob('../projects/*.md');
+  // const allProjects: any = await Astro.glob('../projects/*.md');
+
+  const allProjects = await getCollection('projects');
 
   const uniqueTags = [
-    ...new Set(
-      allProjects.map((project: Project) => project.frontmatter.tags).flat()
-    )
+    ...new Set(allProjects.map(project => project.data.tags).flat())
   ];
 
   return uniqueTags.map((tag: any) => {
-    const filteredProjects = allProjects.filter((project: Project) =>
-      project.frontmatter.tags.includes(tag)
+    const filteredProjects = allProjects.filter(project =>
+      project.data.tags.includes(tag)
     );
     return {
       params: { tag },
@@ -44,9 +37,9 @@ const { projects } = Astro.props as Props;
     <p>Projects tagged with {tag}</p>
 
     {
-      projects.map((project: Project) => (
+      projects.map(project => (
         <li>
-          <a href={project.url}>{project.frontmatter.title}</a>
+          <a href={`/projects/${project.slug}/`}>{project.data.title}</a>
         </li>
       ))
     }

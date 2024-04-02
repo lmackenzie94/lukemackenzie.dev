@@ -4,6 +4,7 @@ import ProjectList from '../components/ProjectList.astro';
 import Button from '../components/Button.astro';
 import Section from '../components/Section.astro';
 import Heading from '../components/Heading.astro';
+import Greeting from '../components/Greeting';
 
 const PAGE_TITLE = 'Home';
 ---
@@ -19,12 +20,14 @@ const PAGE_TITLE = 'Home';
             >Luke</mark
           >
         </h2>
-        <p class="text-lg font-normal text-primary-content lg:text-xl">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, quam
-          eius esse non delectus quisquam voluptas! Excepturi ex dolorum odit?
-          Repellendus porro vel quasi facilis possimus aspernatur aliquid rem
-          ipsum.
-        </p>
+        <Greeting
+          client:load
+          messages={[
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
+            'Cum, quam eius esse non delectus quisquam voluptas!',
+            'Repellendus porro vel quasi facilis possimus aspernatur aliquid remipsum.'
+          ]}
+        />
         <Button variant="tertiary" class="mt-6">Do Something</Button>
       </Section>
     </div>
