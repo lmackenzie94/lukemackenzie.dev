@@ -40,12 +40,14 @@
 <script>
   // astro:page-load is needed since ViewTransitions are enabled (see BaseHead.astro)
   document.addEventListener('astro:page-load', () => {
-    const theme = (() => {
+    type Theme = 'light' | 'dark';
+
+    const theme: Theme = (() => {
       if (
         typeof localStorage !== 'undefined' &&
         localStorage.getItem('theme')
       ) {
-        return localStorage.getItem('theme');
+        return localStorage.getItem('theme') as Theme;
       }
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         return 'dark';
@@ -65,13 +67,16 @@
       const element = document.documentElement;
       element.classList.toggle('dark');
 
-      const isDark = element.classList.contains('dark');
+      const isDark: boolean = element.classList.contains('dark');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
     };
 
-    document
-      .getElementById('themeToggle')
-      .addEventListener('click', handleToggleClick);
+    const themeToggle: HTMLButtonElement | null = document.getElementById(
+      'themeToggle'
+    ) as HTMLButtonElement;
+    if (themeToggle) {
+      themeToggle.addEventListener('click', handleToggleClick);
+    }
   });
 </script>
 
