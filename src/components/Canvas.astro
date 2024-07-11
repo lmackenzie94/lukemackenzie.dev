@@ -1,0 +1,138 @@
+<canvas class="webgl absolute inset-0 z-0"></canvas>
+
+<script>
+  import * as THREE from 'three';
+  import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+  import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
+  import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
+
+  /**
+   * Base
+   */
+  // Canvas
+  const canvas = document.querySelector('canvas.webgl');
+
+  // Scene
+  const scene = new THREE.Scene();
+
+  const textureLoader = new THREE.TextureLoader();
+
+  // const lukeTexture = textureLoader.load('luke.png');
+  // const luke = new THREE.Mesh(
+  //   new THREE.SphereGeometry(3, 32, 32),
+  //   new THREE.MeshBasicMaterial({
+  //     map: lukeTexture
+  //   })
+  // );
+  // scene.add(luke);
+
+  /**
+   * Sizes
+   */
+  const sizes = {
+    width: window.innerWidth,
+    height: window.innerHeight
+  };
+
+  window.addEventListener('resize', onResize);
+
+  function onResize() {
+    // update sizes
+    sizes.width = window.innerWidth;
+    sizes.height = window.innerHeight;
+
+    // update camera
+    camera.aspect = sizes.width / sizes.height;
+    camera.updateProjectionMatrix(); //? must be called after changing any camera parameters
+
+    // update renderer
+    renderer.setSize(sizes.width, sizes.height);
+    // Limit it to 2 - any higher is unnecessary (no visual difference) and will be very GPU intensive
+    //? call setPixelRatio() here so it updates if user moves window between screens with different pixel ratios
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  }
+
+  /**
+   * Camera
+   */
+  // Base camera
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    sizes.width / sizes.height,
+    0.1,
+    100
+  );
+  camera.position.y = 0.5;
+  camera.position.z = 3;
+  scene.add(camera);
+
+  // Controls
+  // const controls = new OrbitControls(camera, canvas);
+  // controls.enableDamping = true;
+
+  /**
+   * Renderer
+   */
+  const renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    alpha: true
+  });
+  renderer.setClearColor(0x000000, 0);
+  renderer.setSize(sizes.width, sizes.height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const matcapTexture = textureLoader.load('/textures/matcaps/8.png');
+
+  const fontLoader = new FontLoader();
+  fontLoader.load('/fonts/helvetiker_regular.typeface.json', (font: any) => {
+    const textGeometry = new TextGeometry('Luke MacKenzie', {
+      font: font,
+      size: 0.3,
+      depth: 0.05,
+      curveSegments: 5,
+      bevelEnabled: true,
+      bevelThickness: 0.03,
+      bevelSize: 0.02,
+      bevelOffset: 0,
+      bevelSegments: 4
+    });
+
+    textGeometry.center();
+
+    const material = new THREE.MeshMatcapMaterial({
+      matcap: matcapTexture
+    });
+    const textMesh = new THREE.Mesh(textGeometry, material);
+
+    scene.add(textMesh);
+
+    // slightly rotate text towards position of mouse
+    window.addEventListener('mousemove', event => {
+      const x = event.clientX;
+      const y = event.clientY;
+
+      textMesh.rotation.y =
+        (((x - sizes.width / 2) / sizes.width) * Math.PI) / 6;
+      textMesh.rotation.x =
+        (((y - sizes.height / 2) / sizes.height) * Math.PI) / 6;
+    });
+  });
+
+  /**
+   * Animate
+   */
+  const clock = new THREE.Clock();
+
+  const tick = () => {
+    // Update controls
+    // controls.update();
+
+    // Render
+    renderer.render(scene, camera);
+
+    // Call tick again on the next frame
+    window.requestAnimationFrame(tick);
+  };
+
+  tick();
+</script>

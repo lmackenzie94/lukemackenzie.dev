@@ -1,0 +1,38 @@
+---
+import { socials } from '../constants';
+---
+
+<section
+  class="container flex flex-col justify-center items-center h-[50svh] z-10 relative"
+>
+  <ul transition:name="socials" class="flex gap-2 mb-2">
+    {
+      socials.map(social => (
+        <li>
+          <a href={social.url} target="_blank" rel="noopener noreferrer">
+            <p class="sr-only">{social.name}</p>
+            <i
+              class={`${social.icon} text-2xl text-[rgb(var(--accent-dark))] opacity-50 hover:opacity-100 transition-opacity w-10 h-10 flex items-center justify-center`}
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h1 transition:name="site-title" class="text-gradient text-6xl font-black">
+    Luke MacKenzie
+  </h1>
+  <p
+    transition:name="site-subtitle"
+    class="text-xl text-gray-600 mt-2 font-mono tracking-tight"
+  >
+    Web Developer. Toronto.
+  </p>
+</section>
+
+<style>
+  svg {
+    fill: red;
+  }
+</style>

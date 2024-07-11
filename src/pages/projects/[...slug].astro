@@ -1,0 +1,112 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Carousel from '../../components/Carousel.astro';
+import { socials } from '../../constants';
+// import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const { title, publishDate, tags, images, codeUrl, liveUrl } = entry.data;
+---
+
+<!-- <ProjectLayout frontmatter={entry.data}> -->
+<Layout title={title}>
+  <header class="container flex justify-between mb-10 py-8">
+    <a href="/">
+      <h1
+        transition:name="site-title"
+        class="text-gradient text-2xl font-black"
+      >
+        Luke MacKenzie
+      </h1>
+    </a>
+    <ul transition:name="socials" class="flex gap-2 mb-2">
+      {
+        socials.map(social => (
+          <li>
+            <a href={social.url} target="_blank" rel="noopener noreferrer">
+              <p class="sr-only">{social.name}</p>
+              <i
+                class={`${social.icon} text-2xl text-[rgb(var(--accent-dark))] opacity-50 hover:opacity-100 transition-opacity w-10 h-10 flex items-center justify-center`}
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p
+      transition:name="site-subtitle"
+      class="text-base text-gray-600 mt-2 font-mono tracking-tight"
+    >
+      Web Developer. Toronto.
+    </p>
+  </header>
+  <main class="container">
+    <article
+      transition:name={`project-${title}`}
+      class="max-w-3xl bg-white border border-gray-200 rounded-2xl shadow-lg shadow-gray-100 overflow-hidden mx-auto"
+    >
+      <Carousel images={images} />
+      <div class="p-6 md:p-8">
+        <div class="flex flex-col-reverse mb-3">
+          <h1 class="text-3xl font-bold">
+            {title}
+          </h1>
+          <div class="flex gap-4 text-lg mb-1">
+            {
+              liveUrl && (
+                <a
+                  href={liveUrl}
+                  class="text-[rgb(var(--accent-dark)] opacity-50 hover:opacity-100 transition-opacity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <p class="sr-only">Go to site</p>
+                  <i class="fa-solid fa-eye" />
+                </a>
+              )
+            }
+            {
+              codeUrl && (
+                <a
+                  href={codeUrl}
+                  class="text-[rgb(var(--accent-dark))] opacity-50 hover:opacity-100 transition-opacity"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <p class="sr-only">Go to code</p>
+                  <i class="fa-solid fa-code" />
+                </a>
+              )
+            }
+          </div>
+        </div>
+
+        <Content />
+
+        <ul class="mt-6">
+          {
+            tags.map((tag, index) => (
+              <li
+                class={`text-sm rounded-full px-3 py-1 mr-2 mt-2 inline-block ${index % 2 === 0 ? 'bg-pink-100 text-pink-800' : 'bg-purple-100 text-purple-800'}`}
+              >
+                {tag}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </article>
+  </main>
+</Layout>
+<!-- </ProjectLayout> -->

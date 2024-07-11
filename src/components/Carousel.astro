@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+
+const { images } = Astro.props;
+---
+
+<div class="relative">
+  <div
+    class="carousel flex overflow-x-scroll snap-mandatory snap-x scroll-smooth"
+  >
+    {
+      images.map((image: any, index: number) => {
+        return (
+          <Image
+            src={image.src}
+            alt={image.alt}
+            format="webp"
+            widths={[800, 1200, 1600]}
+            class="aspect-video snap-center object-cover object-top"
+            loading={index === 0 ? 'eager' : 'lazy'}
+          />
+        );
+      })
+    }
+  </div>
+  <div class="carousel-nav flex justify-center">
+    {
+      images.map((_: any, index: number) => (
+        <button
+          data-index={index}
+          aria-label={`Go to slide ${index + 1}`}
+          class={`carousel-nav-button w-10 h-10 ${index === 0 ? 'active' : ''}`}
+        >
+          <i
+            role="presentation"
+            class="fas fa-circle text-[rgb(var(--accent-dark))] text-xs"
+          />
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .carousel-nav-button {
+    opacity: 0.3;
+  }
+  .carousel-nav-button.active {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const carousel = document.querySelector('.carousel') as HTMLDivElement;
+    const navButtons = document.querySelectorAll(
+      '.carousel-nav-button'
+    ) as NodeListOf<HTMLButtonElement>;
+
+    navButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const index = button.getAttribute('data-index') as unknown as number;
+        carousel?.scrollTo({
+          left: carousel.offsetWidth * index,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    carousel.addEventListener('scroll', () => {
+      const activeIndex = Math.round(
+        carousel.scrollLeft / carousel.offsetWidth
+      );
+
+      navButtons.forEach(button => {
+        const buttonIndex = button.getAttribute('data-index')!;
+        button.classList.toggle('active', +buttonIndex === activeIndex);
+      });
+    });
+  });
+</script>
