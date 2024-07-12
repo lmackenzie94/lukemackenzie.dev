@@ -19,7 +19,7 @@ const projects = await getCollection('projects');
     >
       Projects
     </h2> -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
         projects.map((project, index) => {
           const { title, images, tags } = project.data;
@@ -28,16 +28,16 @@ const projects = await getCollection('projects');
             <a
               href={`/projects/${project.slug}`}
               transition:name={`project-${title}-card`}
-              class="max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-neutral-200 hover:-translate-y-2"
+              class="max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:-translate-y-2"
             >
               <article
-                class={`${index % 2 === 0 ? 'bg-[rgb(var(--accent-light))]' : 'bg-[#5EA821]'} bg-opacity-10`}
+                class={`${index % 2 === 0 ? 'bg-[rgb(var(--accent-light))]' : 'bg-[#5EA821]'} bg-opacity-5`}
               >
                 <Image
                   src={featuredImage.src}
                   alt={featuredImage.alt}
                   format="webp"
-                  class="aspect-video border-b border-gray-200 object-cover object-top opacity-70 transition-all duration-500 grayscale"
+                  class="aspect-video border-b border-gray-200 object-cover object-top opacity-80 transition-all duration-500 grayscale"
                   widths={[800, 1200, 1600]}
                 />
                 <div class="p-4 bg-white">
