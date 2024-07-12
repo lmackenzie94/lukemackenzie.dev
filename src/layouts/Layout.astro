@@ -36,7 +36,7 @@ const { title: pageTitle } = Astro.props;
         --accent-dark: 49, 10, 101;
         --accent-gradient: linear-gradient(
           0deg,
-          rgb(133, 119, 150) 0%,
+          rgb(130, 113, 152) 0%,
           rgb(38, 0, 82) 100%
         );
       }
@@ -61,10 +61,11 @@ const { title: pageTitle } = Astro.props;
       }
 
       body {
+        color: #242424;
         background: linear-gradient(
           rgb(var(--accent-light)) 0%,
-          white 40%,
-          white 80%,
+          rgb(245, 245, 245) 40%,
+          rgb(245, 245, 245) 80%,
           rgb(var(--accent-light)) 110%
         );
       }

@@ -22,26 +22,31 @@ const projects = await getCollection('projects');
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {
         projects.map(project => {
-          const { title, publishDate, images, tags } = project.data;
+          const { title, images, tags } = project.data;
           const featuredImage = images[0];
           return (
             <a
               href={`/projects/${project.slug}`}
-              transition:name={`project-${title}`}
-              class="max-w-lg bg-white border border-gray-200 rounded-lg shadow-lg shadow-gray-100 overflow-hidden hover:shadow-none transition-shadow"
+              transition:name={`project-${title}-card`}
+              class="max-w-lg bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:-translate-y-2"
             >
-              <article>
+              <article class="bg-[rgb(var(--accent-light))] bg-opacity-5">
                 <Image
                   src={featuredImage.src}
                   alt={featuredImage.alt}
                   format="webp"
-                  class="aspect-video border-b border-gray-200 object-cover object-top"
+                  class="aspect-video border-b border-gray-200 object-cover object-top opacity-70 transition-opacity duration-500"
                   widths={[800, 1200, 1600]}
                 />
-                <div class="p-4">
-                  <h3 class="font-bold text-2xl mb-2">{title}</h3>
+                <div class="p-4 bg-white">
+                  <h3
+                    transition:name={`project-${title}-title`}
+                    class="font-bold text-2xl mb-2"
+                  >
+                    {title}
+                  </h3>
 
-                  <ul>
+                  <ul transition:name={`project-${title}-tags`}>
                     {tags.map((tag, index) => (
                       <li
                         class={`text-xs rounded-full px-3 py-1 mr-2 mt-2 inline-block ${index % 2 === 0 ? 'bg-pink-100 text-pink-800' : 'bg-purple-100 text-purple-800'}`}
@@ -61,6 +66,10 @@ const projects = await getCollection('projects');
 </Layout>
 
 <style>
+  article:hover img,
+  article:focus img {
+    opacity: 1;
+  }
   /* .link-card-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
