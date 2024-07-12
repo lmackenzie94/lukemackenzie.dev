@@ -22,7 +22,7 @@ import { socials } from '../constants';
 
   <h1
     transition:name="site-title"
-    class="text-gradient text-4xl sm:text-6xl font-black"
+    class="text-gradient text-4xl sm:text-6xl font-black relative"
   >
     Luke MacKenzie
   </h1>
@@ -35,7 +35,16 @@ import { socials } from '../constants';
 </section>
 
 <style>
-  svg {
-    fill: red;
+  h1::before {
+    content: '';
+    display: block;
+    width: 110%;
+    left: -5%;
+    height: 17%;
+    bottom: 4%;
+    background: #5ea821;
+    position: absolute;
+    mix-blend-mode: plus-lighter;
+    animation: expandWidth 1s forwards;
   }
 </style>
