@@ -23,7 +23,7 @@ const { images } = Astro.props;
       })
     }
   </div>
-  <div class="carousel-nav flex justify-center">
+  <div class="carousel-nav flex justify-center opacity-60">
     {
       images.map((_: any, index: number) => (
         <button
@@ -31,10 +31,7 @@ const { images } = Astro.props;
           aria-label={`Go to slide ${index + 1}`}
           class={`carousel-nav-button w-10 h-10 ${index === 0 ? 'active' : ''}`}
         >
-          <i
-            role="presentation"
-            class="fas fa-circle text-[rgb(var(--accent-dark))] text-xs"
-          />
+          <i role="presentation" class="fas fa-circle text-[#5EA821] text-xs" />
         </button>
       ))
     }
