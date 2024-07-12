@@ -9,7 +9,7 @@ images:
       alt: 'For The Records - Where The Light Is by John Mayer album page'
     }
   ]
-tags: ['Astro', 'Payload CMS', 'DigitalOcean']
+tags: ['Astro', 'Payload CMS', 'Tailwind', 'DigitalOcean']
 codeUrl: 'https://github.com/lmackenzie94/for-the-records-astro-payload'
 liveUrl: 'https://for-the-records.com'
 ---

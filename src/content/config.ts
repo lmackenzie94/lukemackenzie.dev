@@ -8,10 +8,11 @@ const projects = defineCollection({
       publishDate: z.date(),
       images: z.array(
         z.object({
-          // src: z.string(),
-          src: image().refine(src => src.width >= 1000, {
-            message: 'Image width must be at least 1000px'
-          }),
+          src: image(),
+          // src: image().refine(src => src.width >= 1000, {
+          //   message: 'Image width must be at least 1000px'
+          // }),
+          objectFit: z.enum(['cover', 'contain']).default('cover'),
           alt: z.string()
         })
       ),

@@ -2,18 +2,17 @@
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import Canvas from '../components/Canvas.astro';
 import Hero from '../components/Hero.astro';
 
 const projects = await getCollection('projects');
 ---
 
-<Layout title="Luke MacKenzie.">
+<Layout title="Home">
   <!-- <Canvas /> -->
 
   <Hero />
 
-  <main class="container z-10">
+  <main class="container z-10 flex-1">
     <!-- <h2
       transition:name="heading"
       class="text-gradient text-3xl font-black mb-6"

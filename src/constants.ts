@@ -1,3 +1,5 @@
+export const siteTitle = 'Luke MacKenzie';
+
 export const socials = [
   {
     name: 'GitHub',

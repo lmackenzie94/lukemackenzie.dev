@@ -16,7 +16,7 @@ const { images } = Astro.props;
             alt={image.alt}
             format="webp"
             widths={[800, 1200, 1600]}
-            class="aspect-video snap-center object-cover object-top"
+            class={`w-full aspect-video snap-center object-top ${image.objectFit === 'contain' ? 'object-contain' : 'object-cover'}`}
             loading={index === 0 ? 'eager' : 'lazy'}
           />
         );
@@ -53,6 +53,10 @@ const { images } = Astro.props;
 <script>
   document.addEventListener('astro:page-load', () => {
     const carousel = document.querySelector('.carousel') as HTMLDivElement;
+
+    // TODO: is this the correct way to only execute this script on pages with a carousel?
+    if (!carousel) return;
+
     const navButtons = document.querySelectorAll(
       '.carousel-nav-button'
     ) as NodeListOf<HTMLButtonElement>;

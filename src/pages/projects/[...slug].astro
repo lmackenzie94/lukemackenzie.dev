@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Carousel from '../../components/Carousel.astro';
 import { socials } from '../../constants';
+import { Image } from 'astro:assets';
 // import ProjectLayout from '../../layouts/ProjectLayout.astro';
 
 export async function getStaticPaths() {
@@ -51,12 +52,23 @@ const { title, publishDate, tags, images, codeUrl, liveUrl } = entry.data;
       Web Developer. Toronto.
     </p>
   </header>
-  <main class="container">
+  <main class="container flex-1">
     <article
       transition:name={`project-${title}`}
       class="max-w-3xl bg-white border border-gray-200 rounded-2xl shadow-lg shadow-gray-100 overflow-hidden mx-auto"
     >
-      <Carousel images={images} />
+      {
+        images.length > 1 ? (
+          <Carousel images={images} />
+        ) : (
+          <Image
+            src={images[0].src}
+            alt={images[0].alt}
+            class={`w-full aspect-video border-b border-gray-200 mx-auto object-top ${images[0].objectFit === 'contain' ? 'object-contain' : 'object-cover'}`}
+            widths={[800, 1200, 1600]}
+          />
+        )
+      }
       <div class="p-6 md:p-8">
         <div class="flex flex-col-reverse mb-3">
           <h1 class="text-3xl font-bold">
