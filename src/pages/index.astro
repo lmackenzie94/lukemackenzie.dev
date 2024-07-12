@@ -30,12 +30,12 @@ const projects = await getCollection('projects');
               transition:name={`project-${title}-card`}
               class="max-w-lg bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:-translate-y-2"
             >
-              <article class="bg-[rgb(var(--accent-light))] bg-opacity-5">
+              <article class="bg-[rgb(var(--accent-light))] bg-opacity-10">
                 <Image
                   src={featuredImage.src}
                   alt={featuredImage.alt}
                   format="webp"
-                  class="aspect-video border-b border-gray-200 object-cover object-top opacity-70 transition-opacity duration-500"
+                  class="aspect-video border-b border-gray-200 object-cover object-top opacity-80 transition-opacity duration-500 grayscale hover:grayscale-0"
                   widths={[800, 1200, 1600]}
                 />
                 <div class="p-4 bg-white">
