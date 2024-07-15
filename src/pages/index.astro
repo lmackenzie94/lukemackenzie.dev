@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import Hero from '../components/Hero.astro';
+// import Canvas from '../components/Canvas.astro';
 
 const projects = await getCollection('projects');
 ---
@@ -12,14 +13,14 @@ const projects = await getCollection('projects');
 
   <Hero />
 
-  <main class="container z-10 flex-1">
+  <main class="container z-10 flex-1 pt-4 sm:pt-10">
     <!-- <h2
       transition:name="heading"
       class="text-gradient text-3xl font-black mb-6"
     >
       Projects
     </h2> -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
       {
         projects.map((project, index) => {
           const { title, images, tags } = project.data;

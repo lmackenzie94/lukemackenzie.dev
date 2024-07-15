@@ -3,7 +3,7 @@ import { socials } from '../constants';
 ---
 
 <section
-  class="container flex flex-col justify-center items-center h-[50svh] z-10 relative"
+  class="container flex flex-col justify-center items-center pt-28 pb-16 sm:pt-48 sm:pb-24 z-10 relative"
 >
   <ul transition:name="socials" class="flex gap-2 mb-2">
     {
@@ -28,29 +28,47 @@ import { socials } from '../constants';
   </h1>
   <p
     transition:name="site-subtitle"
-    class="text-md sm:text-xl text-gray-600 mt-2 font-mono tracking-tight"
+    class="text-md sm:text-xl text-gray-600 mt-2 mb-8 font-mono tracking-tight"
   >
     Web Developer. Toronto.
   </p>
-</section>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 300 300"
+    class="w-16 sm:w-20 opacity-30"
+    ><path
+      class="fill-[#5ea821] animate-flash"
+      style="animation-delay: 0s;"
+      d="M150 120.26L27.79 97.76 33.23 68.25 150 89.75 266.77 68.25 272.21 97.76 150 120.26z"
+    ></path><path
+      class="fill-[#5ea821] animate-flash"
+      style="animation-delay: 0.25s;"
+      d="M150 176.25L27.79 153.75 33.23 124.25 150 145.75 266.77 124.25 272.21 153.75 150 176.25z"
+    ></path><path
+      class="fill-[#5ea821] animate-flash"
+      style="animation-delay: 0.5s;"
+      d="M150 232.25L27.79 209.75 33.23 180.24 150 201.74 266.77 180.24 272.21 209.75 150 232.25z"
+    ></path>
+  </svg>
 
-<style>
-  h1::before {
-    content: '';
-    display: block;
-    width: 110%;
-    left: -5%;
-    height: 17%;
-    bottom: 5%;
-    background: #5ea821;
-    position: absolute;
-    mix-blend-mode: plus-lighter;
-    animation: expandWidth 1s forwards;
-  }
-
-  @media screen(sm) {
-    h1::before {
-      bottom: 4%;
+  <style>
+    h1::after {
+      content: '';
+      display: block;
+      width: 110%;
+      left: -5%;
+      height: 17%;
+      bottom: 5%;
+      background: #5ea821;
+      position: absolute;
+      mix-blend-mode: plus-lighter;
+      animation: expandWidth 1s forwards;
     }
-  }
-</style>
+
+    @media screen(sm) {
+      h1::after {
+        bottom: 4%;
+      }
+    }
+  </style>
+</section>
