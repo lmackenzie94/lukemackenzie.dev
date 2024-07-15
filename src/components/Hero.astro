@@ -41,10 +41,16 @@ import { socials } from '../constants';
     width: 110%;
     left: -5%;
     height: 17%;
-    bottom: 4%;
+    bottom: 5%;
     background: #5ea821;
     position: absolute;
     mix-blend-mode: plus-lighter;
     animation: expandWidth 1s forwards;
+  }
+
+  @media screen(sm) {
+    h1::before {
+      bottom: 4%;
+    }
   }
 </style>

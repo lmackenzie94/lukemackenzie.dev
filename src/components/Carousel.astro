@@ -16,7 +16,7 @@ const { images } = Astro.props;
             alt={image.alt}
             format="webp"
             widths={[800, 1200, 1600]}
-            class={`w-full aspect-video snap-center object-top ${image.objectFit === 'contain' ? 'object-contain' : 'object-cover'}`}
+            class={`w-full min-w-full aspect-video snap-center object-top ${image.objectFit === 'contain' ? 'object-contain' : 'object-cover'}`}
             loading={index === 0 ? 'eager' : 'lazy'}
           />
         );
@@ -28,7 +28,7 @@ const { images } = Astro.props;
       images.map((_: any, index: number) => (
         <button
           data-index={index}
-          aria-label={`Go to slide ${index + 1}`}
+          aria-label={`Go to image ${index + 1}`}
           class={`carousel-nav-button w-10 h-10 ${index === 0 ? 'active' : ''}`}
         >
           <i role="presentation" class="fas fa-circle text-[#5EA821] text-xs" />
