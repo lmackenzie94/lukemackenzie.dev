@@ -50,25 +50,25 @@ import { socials } from '../constants';
       d="M150 232.25L27.79 209.75 33.23 180.24 150 201.74 266.77 180.24 272.21 209.75 150 232.25z"
     ></path>
   </svg>
-
-  <style>
-    h1::after {
-      content: '';
-      display: block;
-      width: 110%;
-      left: -5%;
-      height: 17%;
-      bottom: 5%;
-      background: #5ea821;
-      position: absolute;
-      mix-blend-mode: plus-lighter;
-      animation: expandWidth 1s forwards;
-    }
-
-    @media screen(sm) {
-      h1::after {
-        bottom: 4%;
-      }
-    }
-  </style>
 </section>
+
+<style>
+  h1::after {
+    content: '';
+    display: block;
+    width: 110%;
+    left: -5%;
+    height: 17%;
+    bottom: 5%;
+    background: #5ea821;
+    position: absolute;
+    mix-blend-mode: plus-lighter;
+    z-index: 10;
+  }
+
+  @media screen(sm) {
+    h1::after {
+      bottom: 4%;
+    }
+  }
+</style>
