@@ -13,6 +13,9 @@ export default {
       }
     },
     extend: {
+      fontSize: {
+        xxs: '.65rem'
+      },
       animation: {
         flash: 'flash 1s ease-in-out infinite'
       },

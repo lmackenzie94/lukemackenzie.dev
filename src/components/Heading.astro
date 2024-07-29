@@ -17,7 +17,7 @@ const colourClasses = variant === 'purple' ? purpleClasses : greenClasses;
 
 <div class="subheading text-center relative mb-12">
   <h2
-    class={`${colourClasses} text-base sm:text-lg font-mono inline-block text-white px-4 py-2 rounded-full ring-1 ring-offset-2 min-w-40`}
+    class={`${colourClasses} text-sm sm:text-base font-mono inline-block text-white px-6 py-2 rounded-full ring-1 ring-offset-2 min-w-32 sm:min-w-40`}
   >
     <slot />
   </h2>
@@ -27,11 +27,11 @@ const colourClasses = variant === 'purple' ? purpleClasses : greenClasses;
   .subheading::before {
     content: '';
     position: absolute;
-    width: 80%;
+    width: 90%;
     height: 1px;
     background: var(--colour);
     top: 50%;
-    left: 10%;
+    left: 5%;
     transform: translateY(-50%) scaleX(0);
     opacity: 0.3;
     z-index: -1;
@@ -44,8 +44,8 @@ const colourClasses = variant === 'purple' ? purpleClasses : greenClasses;
 
   @media screen(sm) {
     .subheading::before {
-      width: 70%;
-      left: 15%;
+      width: 60%;
+      left: 20%;
     }
   }
 </style>

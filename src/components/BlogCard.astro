@@ -12,7 +12,7 @@ const formattedDate = formatDate(publishDate);
 <a
   href={`/blog/${blog.slug}`}
   transition:name={`blog-${title}-card`}
-  class="group max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:-translate-y-2"
+  class="group max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:-translate-y-2 opacity-80 hover:opacity-100 focus:opacity-100"
 >
   <article
     class="bg-[#5ea82120] group-hover:bg-opacity-100 group-focus:bg-opacity-100 transition-colors"
@@ -21,15 +21,12 @@ const formattedDate = formatDate(publishDate);
       src={image.src}
       alt={image.alt}
       format="webp"
-      class="aspect-[2/1] border-b border-gray-200 object-cover object-top opacity-50 transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-focus:grayscale-0 group-focus:opacity-100"
+      class="aspect-[2/1] border-b border-gray-200 object-cover object-top opacity-70 transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-focus:grayscale-0 group-focus:opacity-100"
       widths={[800, 1200, 1600]}
     />
     <div class="p-4 bg-white text-center">
       <p class="text-xs text-gray-400 mb-2">{formattedDate}</p>
-      <h3
-        transition:name={`blog-${title}-title`}
-        class="text-2xl font-bold text-gray-600 group-hover:text-black group-focus:text-black transition-colors"
-      >
+      <h3 transition:name={`blog-${title}-title`} class="text-2xl font-bold">
         {title}
       </h3>
     </div>

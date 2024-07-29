@@ -38,7 +38,7 @@ there
 everyone
 ```
 
-But what’s actually happening?
+But what’s actually happening? 🤔
 
 Well, we’re harnessing the power of asynchronous callbacks! Essentially, the function we passed to `setTimeout()` kicks off a 5 seconds timer in the browser, allowing the call to `setTimeout()` to be removed from the stack because it’s done its job. Without asynchronous callbacks, the execution of our code would pause for 5 seconds and our site would be completely unresponsive.
 

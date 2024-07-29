@@ -31,7 +31,7 @@ const formattedDate = formatDate(publishDate);
         src={image.src}
         alt={image.alt}
         format="webp"
-        class="w-full aspect-[3/1] object-cover object-top rounded-t-2xl"
+        class="w-full aspect-[3/1] object-cover object-top rounded-t-2xl mb-4"
         widths={[800, 1200, 1600]}
       />
       <!-- {
@@ -47,7 +47,7 @@ const formattedDate = formatDate(publishDate);
       } -->
 
       <div
-        class="prose prose-sm sm:prose-base prose:text-gray-600 prose-blockquote:bg-[#5EA821]/5 prose-blockquote:p-4 mt-8 prose-blockquote:border-[#5EA821] prose-h1:mb-0"
+        class="prose prose-sm sm:prose-base prose:text-gray-600 prose-h1:mb-0 prose-a:text-purple-800"
       >
         <h1 transition:name={`blog-${title}-title`}>
           {title}

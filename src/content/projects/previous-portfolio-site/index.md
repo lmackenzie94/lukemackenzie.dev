@@ -9,7 +9,7 @@ images:
     },
     { src: './image-2.webp', alt: 'Custom Sanity CMS' }
   ]
-tags: ['React', 'Gatsby', 'Sanity CMS', 'ThemeUI', 'Cypress']
+tags: ['React', 'Gatsby', 'Sanity', 'ThemeUI', 'Cypress']
 codeUrl: 'https://github.com/lmackenzie94/portfolio-2020'
 liveUrl: 'https://lukemackenzie.ca'
 ---

@@ -22,7 +22,7 @@ If HTML is the noun and CSS is the adjective, JavaScript is the verb. In other w
 
 Now for the more technical definition: JavaScript is a dynamically typed, single threaded, scripting language.
 
-Um, what?
+Um, what? 😕
 
 Let’s break that down:
 
@@ -54,7 +54,5 @@ With that in mind, the JavaScript engine is a program that parses (reads) our co
 Common JavaScript engines include Google’s V8, which is used by Chrome, Opera and Node, and SpiderMonkey, which is used by FireFox.
 
 <div class="callout warn">
-  If you evaluate <code>typeof null</code> in the console, you’ll get object. As we just learned, null is a primitive, not an object – so what’s going on? This is simply a bug in the language and it’s too late now to fix it.
+  If you evaluate <code>typeof null</code> in the console, you’ll get <code>object</code>. As we just learned, null is a primitive, not an object – so what’s going on? This is simply a bug in the language and it’s too late now to fix it.
 </div>
-
-\*be sure to check back on this post from time to time as I'll continue to add to it

@@ -36,7 +36,7 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
       )
     }
     <div class="p-6 md:p-8">
-      <div class="flex flex-col mb-5">
+      <div class="flex flex-col mb-0">
         <div class="flex gap-4 text-lg mb-1">
           {
             liveUrl && (
@@ -65,15 +65,14 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
             )
           }
         </div>
-        <h1
-          transition:name={`project-${title}-title`}
-          class="text-3xl font-bold"
-        >
-          {title}
-        </h1>
       </div>
 
-      <div class="text-gray-600">
+      <div
+        class="prose prose-sm sm:prose-base prose:text-gray-600 prose-h1:mt-0 prose-a:text-purple-800"
+      >
+        <h1 transition:name={`project-${title}-title`}>
+          {title}
+        </h1>
         <Content />
       </div>
 
@@ -81,7 +80,7 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
         {
           tags.map((tag, index) => (
             <li
-              class={`text-sm rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-purple-800/10 text-purple-800' : 'bg-[#5EA821]/10 text-[#5EA821]'}`}
+              class={`text-xs tracking-tight font-mono rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-purple-800/10 text-purple-800' : 'bg-[#5EA821]/10 text-[#5EA821]'}`}
             >
               {tag}
             </li>
