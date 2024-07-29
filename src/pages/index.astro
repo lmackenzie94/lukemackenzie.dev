@@ -1,28 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
 import Hero from '../components/Hero.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-
-const projects = await getCollection('projects');
-
-projects.sort(
-  (a, b) =>
-    new Date(b.data.publishDate).getTime() -
-    new Date(a.data.publishDate).getTime()
-);
+import ProjectList from '../components/ProjectList.astro';
+import BlogList from '../components/BlogList.astro';
+import Heading from '../components/Heading.astro';
 ---
 
 <Layout title="Home">
   <Hero />
 
   <main class="container z-10 flex-1 pt-4 sm:pt-10">
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-      {
-        projects.map(project => {
-          return <ProjectCard project={project} />;
-        })
-      }
-    </div>
+    <ProjectList />
+    <BlogList />
   </main>
 </Layout>

@@ -1,0 +1,51 @@
+---
+interface Props {
+  variant?: 'purple' | 'green';
+}
+
+const { variant = 'purple' } = Astro.props;
+
+const colour = variant === 'purple' ? 'rgb(var(--accent-dark))' : '#5EA821';
+// const colourClasses = `bg-[${colour}] ring-[${colour}]`; <-- can't do this
+
+const purpleClasses =
+  'bg-[rgb(var(--accent-dark))] ring-[rgb(var(--accent-dark))]';
+const greenClasses = 'bg-[#5EA821] ring-[#5EA821]';
+
+const colourClasses = variant === 'purple' ? purpleClasses : greenClasses;
+---
+
+<div class="subheading text-center relative mb-12">
+  <h2
+    class={`${colourClasses} text-base sm:text-lg font-mono inline-block text-white px-8 py-2 rounded-full ring-1 ring-offset-2`}
+  >
+    <slot />
+  </h2>
+</div>
+
+<style define:vars={{ colour }}>
+  .subheading::before {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 1px;
+    background: var(--colour);
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%) scaleX(0);
+    opacity: 0.3;
+    z-index: -1;
+    transition: transform 0.4s ease-in-out 0.2s;
+  }
+
+  .subheading.visible::before {
+    transform: translateY(-50%) scaleX(1);
+  }
+
+  @media screen(sm) {
+    .subheading::before {
+      width: 70%;
+      left: 15%;
+    }
+  }
+</style>

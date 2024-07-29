@@ -11,7 +11,9 @@ const featuredImage = images[0];
   transition:name={`project-${title}-card`}
   class="group max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:-translate-y-2"
 >
-  <article>
+  <article
+    class="bg-[#e6d7fa4f] group-hover:bg-opacity-100 group-focus:bg-opacity-100 transition-colors"
+  >
     <Image
       src={featuredImage.src}
       alt={featuredImage.alt}
@@ -22,12 +24,15 @@ const featuredImage = images[0];
     <div class="p-4 bg-white">
       <h3
         transition:name={`project-${title}-title`}
-        class="text-2xl font-bold text-center mb-2"
+        class="text-2xl font-bold text-center mb-2 text-gray-600 group-hover:text-black group-focus:text-black transition-colors"
       >
         {title}
       </h3>
 
-      <ul transition:name={`project-${title}-tags`} class="text-center">
+      <ul
+        transition:name={`project-${title}-tags`}
+        class="text-center saturate-50 group-hover:saturate-100 group-focus:saturate-100"
+      >
         {
           tags.map((tag: string, index: number) => (
             <li

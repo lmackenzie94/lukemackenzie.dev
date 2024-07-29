@@ -24,12 +24,17 @@ const projects = defineCollection({
 
 const blog = defineCollection({
   type: 'content',
-  schema: z.object({
-    title: z.string(),
-    publishDate: z.date(),
-    // Reference an array of related posts from the `blog` collection by `slug`
-    relatedPosts: z.array(reference('blog'))
-  })
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      publishDate: z.date(),
+      image: z.object({
+        src: image(),
+        alt: z.string()
+      })
+      // Reference an array of related posts from the `blog` collection by `slug`
+      // relatedPosts: z.array(reference('blog'))
+    })
 });
 
 export const collections = {

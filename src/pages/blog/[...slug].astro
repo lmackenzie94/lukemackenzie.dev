@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import { Image } from 'astro:assets';
+import { formatDate } from '../../utils';
+
+export async function getStaticPaths() {
+  const blogs = await getCollection('blog');
+
+  return blogs.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
+
+// console.log(headings);
+
+const { title, publishDate, image } = entry.data;
+const formattedDate = formatDate(publishDate);
+---
+
+<BlogLayout title={title}>
+  <article
+    transition:name={`blog-${title}-card`}
+    class="bg-white border border-gray-200 rounded-2xl shadow-lg shadow-neutral-200/50 overflow-hidden relative"
+  >
+    <div class="p-6 md:p-8">
+      <Image
+        src={image.src}
+        alt={image.alt}
+        format="webp"
+        class="w-full aspect-[3/1] object-cover object-top rounded-t-2xl"
+        widths={[800, 1200, 1600]}
+      />
+      <!-- {
+        headings.map((heading, index) => (
+          <a
+            href={`#${heading.slug}`}
+            class={`text-xs rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-purple-800/10 text-purple-800' : 'bg-[#5EA821]/10 text-[#5EA821]'}`}
+          >
+            <span class="text-gray-400">#</span>
+            {heading.text}
+          </a>
+        ))
+      } -->
+
+      <div
+        class="prose prose-sm sm:prose-base prose:text-gray-600 prose-blockquote:bg-[#5EA821]/5 prose-blockquote:p-4 mt-8 prose-blockquote:border-[#5EA821] prose-h1:mb-0"
+      >
+        <h1 transition:name={`blog-${title}-title`}>
+          {title}
+        </h1>
+
+        <time class="text-xs text-gray-400" datetime={formattedDate}
+          >{formattedDate}</time
+        >
+        <Content />
+      </div>
+    </div>
+  </article>
+</BlogLayout>
+
+<!-- TODO: better way to do this? -->
+<style is:global>
+  .callout {
+    border-left: 4px solid;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  .callout.success {
+    background-color: #5ea82120;
+    border-color: #5ea821;
+  }
+  .callout.error {
+    background-color: #ff000018;
+    border-color: #ff0000;
+  }
+  .callout.warn {
+    background-color: #ffcc0020;
+    border-color: #ffcc00;
+  }
+  .callout.info {
+    background-color: #0088ff18;
+    border-color: #0088ff;
+  }
+</style>

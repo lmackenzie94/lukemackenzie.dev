@@ -21,7 +21,7 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
 <ProjectLayout title={title}>
   <article
     transition:name={`project-${title}-card`}
-    class="max-w-3xl bg-white border border-gray-200 rounded-2xl shadow-lg shadow-neutral-200/50 overflow-hidden mx-auto"
+    class="bg-white border border-gray-200 rounded-2xl shadow-lg shadow-neutral-200/50 overflow-hidden"
   >
     {
       images.length > 1 ? (

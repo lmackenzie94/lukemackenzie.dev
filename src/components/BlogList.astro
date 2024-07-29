@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import Heading from './Heading.astro';
+import BlogCard from './BlogCard.astro';
+
+const blog = await getCollection('blog');
+
+blog.sort(
+  (a, b) =>
+    new Date(b.data.publishDate).getTime() -
+    new Date(a.data.publishDate).getTime()
+);
+---
+
+<Heading variant="green">Blog</Heading>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+  {blog.map(blog => <BlogCard blog={blog} />)}
+</div>

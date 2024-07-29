@@ -1,0 +1,15 @@
+<button class="text-sm text-gray-500 mb-2 mt-8 font-mono block">
+  <i class="fa-solid fa-arrow-left"></i> Go back
+</button>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const handleClick = () => {
+      history.back();
+    };
+
+    const button = document.querySelector('button');
+    console.log(button);
+    button?.addEventListener('click', handleClick);
+  });
+</script>
