@@ -1,6 +1,6 @@
 ---
 title: 'My Previous Portfolio Site'
-publishDate: 2024-07-12
+publishDate: 2024-07-24
 images:
   [
     {

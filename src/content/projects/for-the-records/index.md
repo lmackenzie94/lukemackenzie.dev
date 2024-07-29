@@ -1,6 +1,6 @@
 ---
 title: 'For The Records'
-publishDate: 2022-07-01
+publishDate: 2024-07-29
 images:
   [
     { src: './image-1.jpeg', alt: 'For The Records home page.' },
