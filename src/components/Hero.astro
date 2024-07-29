@@ -1,24 +1,11 @@
 ---
-import { socials } from '../constants';
+import Socials from './Socials.astro';
 ---
 
 <section
-  class="container flex flex-col justify-center items-center pt-28 pb-16 sm:pt-48 sm:pb-24 z-10 relative"
+  class="container flex flex-col justify-center items-center pt-28 sm:pt-48 pb-16 z-10 relative"
 >
-  <ul transition:name="socials" class="flex gap-2 mb-2">
-    {
-      socials.map(social => (
-        <li>
-          <a href={social.url} target="_blank" rel="noopener noreferrer">
-            <p class="sr-only">{social.name}</p>
-            <i
-              class={`${social.icon} text-2xl text-[rgb(var(--accent-dark))] opacity-30 hover:opacity-60 transition-opacity w-10 h-10 flex items-center justify-center`}
-            />
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <Socials />
 
   <h1
     transition:name="site-title"
@@ -32,7 +19,8 @@ import { socials } from '../constants';
   >
     Web Developer. Toronto.
   </p>
-  <svg
+
+  <!-- <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 300 300"
     class="w-16 sm:w-20 opacity-30"
@@ -49,7 +37,7 @@ import { socials } from '../constants';
       style="animation-delay: 0.5s;"
       d="M150 232.25L27.79 209.75 33.23 180.24 150 201.74 266.77 180.24 272.21 209.75 150 232.25z"
     ></path>
-  </svg>
+  </svg> -->
 </section>
 
 <style>

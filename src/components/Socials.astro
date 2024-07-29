@@ -1,0 +1,18 @@
+---
+import { socials } from '../constants';
+---
+
+<ul transition:name="socials" class="flex gap-2 mb-2">
+  {
+    socials.map(social => (
+      <li>
+        <a href={social.url} target="_blank" rel="noopener noreferrer">
+          <p class="sr-only">{social.name}</p>
+          <i
+            class={`${social.icon} text-2xl text-[rgb(var(--accent-dark))] opacity-30 hover:opacity-60 transition-opacity w-10 h-10 flex items-center justify-center`}
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>

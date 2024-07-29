@@ -1,70 +1,26 @@
 ---
-import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import Hero from '../components/Hero.astro';
-// import Canvas from '../components/Canvas.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 
 const projects = await getCollection('projects');
+
+projects.sort(
+  (a, b) =>
+    new Date(b.data.publishDate).getTime() -
+    new Date(a.data.publishDate).getTime()
+);
 ---
 
 <Layout title="Home">
-  <!-- <Canvas /> -->
-
   <Hero />
 
   <main class="container z-10 flex-1 pt-4 sm:pt-10">
-    <!-- <h2
-      transition:name="heading"
-      class="text-gradient text-3xl font-black mb-6"
-    >
-      Projects
-    </h2> -->
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
       {
-        projects.map((project, index) => {
-          const { title, images, tags } = project.data;
-          const featuredImage = images[0];
-          return (
-            <a
-              href={`/projects/${project.slug}`}
-              transition:name={`project-${title}-card`}
-              class="group max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:-translate-y-2"
-            >
-              <article
-                class={`${index % 2 === 0 ? 'bg-[rgb(var(--accent-light))]' : 'bg-[#5EA821]'} bg-opacity-5`}
-              >
-                <Image
-                  src={featuredImage.src}
-                  alt={featuredImage.alt}
-                  format="webp"
-                  class="aspect-video border-b border-gray-200 object-cover object-top opacity-80 transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:opacity-1 group-foucs:grayscale-0 group-focus:opacity-1"
-                  widths={[800, 1200, 1600]}
-                />
-                <div class="p-4 bg-white">
-                  <h3
-                    transition:name={`project-${title}-title`}
-                    class="text-2xl font-extrabold text-center mb-2"
-                  >
-                    {title}
-                  </h3>
-
-                  <ul
-                    transition:name={`project-${title}-tags`}
-                    class="text-center"
-                  >
-                    {tags.map((tag, index) => (
-                      <li
-                        class={`text-xs rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-purple-800/10 text-purple-800' : 'bg-[#5EA821]/10 text-[#5EA821]'}`}
-                      >
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            </a>
-          );
+        projects.map(project => {
+          return <ProjectCard project={project} />;
         })
       }
     </div>

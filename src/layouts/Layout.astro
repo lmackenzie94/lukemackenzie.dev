@@ -2,6 +2,7 @@
 import { ViewTransitions } from 'astro:transitions';
 import Footer from '../components/Footer.astro';
 import { siteTitle } from '../constants';
+// import Canvas from '../components/Canvas.astro';
 
 interface Props {
   title: string;
@@ -27,6 +28,7 @@ const { title: pageTitle } = Astro.props;
     <ViewTransitions />
   </head>
   <body class="flex flex-col min-h-screen">
+    <!-- <Canvas /> -->
     <slot />
     <Footer />
     <style is:global>

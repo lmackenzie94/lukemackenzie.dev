@@ -1,10 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
 import Carousel from '../../components/Carousel.astro';
-import { socials } from '../../constants';
 import { Image } from 'astro:assets';
-// import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -17,129 +15,79 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-const { title, publishDate, tags, images, codeUrl, liveUrl } = entry.data;
+const { title, tags, images, codeUrl, liveUrl } = entry.data;
 ---
 
-<!-- <ProjectLayout frontmatter={entry.data}> -->
-<Layout title={title}>
-  <header
-    class="container flex flex-col sm:flex-row justify-between items-center mb-8 py-8"
+<ProjectLayout title={title}>
+  <article
+    transition:name={`project-${title}-card`}
+    class="max-w-3xl bg-white border border-gray-200 rounded-2xl shadow-lg shadow-neutral-200/50 overflow-hidden mx-auto"
   >
-    <a href="/" class="order-1 sm:order-none">
-      <p
-        transition:name="site-title"
-        class="site-title text-gradient text-3xl font-black relative"
-      >
-        Luke MacKenzie
-      </p>
-    </a>
-    <ul transition:name="socials" class="flex sm:gap-2">
-      {
-        socials.map(social => (
-          <li>
-            <a href={social.url} target="_blank" rel="noopener noreferrer">
-              <p class="sr-only">{social.name}</p>
-              <i
-                class={`${social.icon} text-xl sm:text-2xl text-[rgb(var(--accent-dark))] opacity-30 hover:opacity-60 transition-opacity w-10 h-10 flex items-center justify-center`}
-              />
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-    <p
-      transition:name="site-subtitle"
-      class="text-xs sm:text-base text-gray-600 font-mono tracking-tight order-2 sm:order-none mt-1 sm:mt-0"
-    >
-      Web Developer. Toronto.
-    </p>
-  </header>
-  <main class="container flex-1">
-    <article
-      transition:name={`project-${title}-card`}
-      class="max-w-3xl bg-white border border-gray-200 rounded-2xl shadow-lg shadow-neutral-200/50 overflow-hidden mx-auto"
-    >
-      {
-        images.length > 1 ? (
-          <Carousel images={images} />
-        ) : (
-          <Image
-            src={images[0].src}
-            alt={images[0].alt}
-            class={`w-full aspect-video border-b border-gray-200 mx-auto object-top ${images[0].objectFit === 'contain' ? 'object-contain' : 'object-cover'}`}
-            widths={[800, 1200, 1600]}
-          />
-        )
-      }
-      <div class="p-6 md:p-8">
-        <div class="flex flex-col mb-5">
-          <div class="flex gap-4 text-lg mb-1">
-            {
-              liveUrl && (
-                <a
-                  href={liveUrl}
-                  class="text-[rgb(var(--accent-dark))] opacity-50 hover:opacity-100 transition-opacity"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <p class="sr-only">Go to site</p>
-                  <i class="fa-solid fa-eye" />
-                </a>
-              )
-            }
-            {
-              codeUrl && (
-                <a
-                  href={codeUrl}
-                  class="text-[#5EA821] opacity-60 hover:opacity-100 transition-opacity"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <p class="sr-only">Go to code</p>
-                  <i class="fa-solid fa-code" />
-                </a>
-              )
-            }
-          </div>
-          <h1
-            transition:name={`project-${title}-title`}
-            class="text-3xl font-extrabold"
-          >
-            {title}
-          </h1>
-        </div>
-
-        <div class="text-gray-600">
-          <Content />
-        </div>
-
-        <ul transition:name={`project-${title}-tags`} class="mt-8">
+    {
+      images.length > 1 ? (
+        <Carousel images={images} />
+      ) : (
+        <Image
+          src={images[0].src}
+          alt={images[0].alt}
+          class={`w-full aspect-video border-b border-gray-200 mx-auto object-top ${images[0].objectFit === 'contain' ? 'object-contain' : 'object-cover'}`}
+          widths={[800, 1200, 1600]}
+        />
+      )
+    }
+    <div class="p-6 md:p-8">
+      <div class="flex flex-col mb-5">
+        <div class="flex gap-4 text-lg mb-1">
           {
-            tags.map((tag, index) => (
-              <li
-                class={`text-sm rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-purple-800/10 text-purple-800' : 'bg-[#5EA821]/10 text-[#5EA821]'}`}
+            liveUrl && (
+              <a
+                href={liveUrl}
+                class="text-[rgb(var(--accent-dark))] opacity-50 hover:opacity-100 transition-opacity"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {tag}
-              </li>
-            ))
+                <p class="sr-only">Go to site</p>
+                <i class="fa-solid fa-eye" />
+              </a>
+            )
           }
-        </ul>
+          {
+            codeUrl && (
+              <a
+                href={codeUrl}
+                class="text-[#5EA821] opacity-60 hover:opacity-100 transition-opacity"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p class="sr-only">Go to code</p>
+                <i class="fa-solid fa-code" />
+              </a>
+            )
+          }
+        </div>
+        <h1
+          transition:name={`project-${title}-title`}
+          class="text-3xl font-bold"
+        >
+          {title}
+        </h1>
       </div>
-    </article>
-  </main>
-</Layout>
-<!-- </ProjectLayout> -->
 
-<style>
-  .site-title::before {
-    content: '';
-    display: block;
-    width: 106%;
-    left: -3%;
-    height: 17%;
-    bottom: 10%;
-    background: #5ea821;
-    position: absolute;
-    mix-blend-mode: plus-lighter;
-  }
-</style>
+      <div class="text-gray-600">
+        <Content />
+      </div>
+
+      <ul transition:name={`project-${title}-tags`} class="mt-8">
+        {
+          tags.map((tag, index) => (
+            <li
+              class={`text-sm rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-purple-800/10 text-purple-800' : 'bg-[#5EA821]/10 text-[#5EA821]'}`}
+            >
+              {tag}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </article>
+</ProjectLayout>
