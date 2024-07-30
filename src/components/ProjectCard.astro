@@ -1,18 +1,20 @@
 ---
 import { Image } from 'astro:assets';
 
-const { project } = Astro.props;
+const { project, index } = Astro.props;
 const { title, tags, images } = project.data;
 const featuredImage = images[0];
+
+const tint = index % 2 === 0 ? 'bg-[#e6d7fa60]' : 'bg-[#5ea82125]';
 ---
 
 <a
   href={`/projects/${project.slug}`}
   transition:name={`project-${title}-card`}
-  class="group max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:-translate-y-2 opacity-80 hover:opacity-100 focus:opacity-100"
+  class="group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:-translate-y-1 opacity-80 hover:opacity-100 focus:opacity-100"
 >
   <article
-    class="bg-[#e6d7fa46] group-hover:bg-opacity-100 group-focus:bg-opacity-100 transition-colors"
+    class={`${tint} group-hover:bg-opacity-100 group-focus:bg-opacity-100 transition-colors`}
   >
     <Image
       src={featuredImage.src}

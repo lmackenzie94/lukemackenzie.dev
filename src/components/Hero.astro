@@ -1,24 +1,45 @@
 ---
+import { siteDescription, siteTitle } from '../constants';
 import Socials from './Socials.astro';
 ---
 
 <section
-  class="container flex flex-col justify-center items-center pt-20 sm:pt-36 pb-16 z-10 relative"
+  class="container flex flex-col justify-center items-center pt-20 sm:pt-36 pb-24 z-10 relative"
 >
   <Socials />
 
   <h1
     transition:name="site-title"
-    class="text-gradient text-4xl sm:text-6xl font-black relative"
+    class="text-gradient text-4xl sm:text-5xl lg:text-6xl font-black relative"
   >
-    Luke MacKenzie
+    {siteTitle}
   </h1>
   <p
     transition:name="site-subtitle"
-    class="text-md sm:text-xl text-gray-500 mt-2 mb-8 font-mono tracking-tight"
+    class="text-base sm:text-lg lg:text-xl text-gray-600 mt-2 font-mono tracking-tight"
   >
-    Web Developer. Toronto.
+    {siteDescription}
   </p>
+
+  <div
+    aria-hidden="true"
+    class="hidden sm:flex absolute top-[50%] lg:top-[45%] w-full justify-between max-w-5xl text-7xl lg:text-8xl md:px-4 text-[rgb(var(--accent-dark))]"
+  >
+    <span
+      aria-hidden="true"
+      data-observe
+      class="opacity-0 font-bold font-mono transition-all -translate-x-20 duration-200"
+    >
+      &nbsp;{`<`}
+    </span>
+    <span
+      aria-hidden="true"
+      data-observe
+      class="opacity-0 font-bold font-mono transition-all translate-x-20 duration-200 delay-300"
+    >
+      {`/>`}
+    </span>
+  </div>
 
   <!-- <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -38,26 +59,31 @@ import Socials from './Socials.astro';
       d="M150 232.25L27.79 209.75 33.23 180.24 150 201.74 266.77 180.24 272.21 209.75 150 232.25z"
     ></path>
   </svg> -->
-</section>
 
-<style>
-  h1::after {
-    content: '';
-    display: block;
-    width: 110%;
-    left: -5%;
-    height: 17%;
-    bottom: 5%;
-    background: #5ea821;
-    position: absolute;
-    mix-blend-mode: plus-lighter;
-    z-index: 10;
-    border-radius: 0.1em;
-  }
-
-  @media screen(sm) {
+  <style>
     h1::after {
-      bottom: 4%;
+      content: '';
+      display: block;
+      width: 110%;
+      left: -5%;
+      height: 15%;
+      bottom: 7%;
+      background: #5ea821;
+      position: absolute;
+      mix-blend-mode: plus-lighter;
+      z-index: 10;
+      border-radius: 0.1em;
     }
-  }
-</style>
+
+    @media screen(sm) {
+      h1::after {
+        bottom: 5%;
+      }
+    }
+
+    span.visible {
+      opacity: 0.1;
+      transform: translate3d(0, 0, 0);
+    }
+  </style>
+</section>

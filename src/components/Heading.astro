@@ -6,7 +6,6 @@ interface Props {
 const { variant = 'purple' } = Astro.props;
 
 const colour = variant === 'purple' ? 'rgb(var(--accent-dark))' : '#5EA821';
-// const colourClasses = `bg-[${colour}] ring-[${colour}]`; <-- can't do this
 
 const purpleClasses =
   'bg-[rgb(var(--accent-dark))] ring-[rgb(var(--accent-dark))]';
@@ -15,7 +14,7 @@ const greenClasses = 'bg-[#5EA821] ring-[#5EA821]';
 const colourClasses = variant === 'purple' ? purpleClasses : greenClasses;
 ---
 
-<div class="subheading text-center relative mb-12">
+<div data-observe class="subheading text-center relative mb-12">
   <h2
     class={`${colourClasses} text-sm sm:text-base font-mono inline-block text-white px-6 py-2 rounded-full ring-1 ring-offset-2 min-w-32 sm:min-w-40`}
   >
@@ -35,7 +34,7 @@ const colourClasses = variant === 'purple' ? purpleClasses : greenClasses;
     transform: translateY(-50%) scaleX(0);
     opacity: 0.3;
     z-index: -1;
-    transition: transform 0.2s ease-out 0.3s;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.2) 0.7s;
   }
 
   .subheading.visible::before {

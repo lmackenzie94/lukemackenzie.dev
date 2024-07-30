@@ -27,8 +27,8 @@ const { title: pageTitle } = Astro.props;
       }
     );
 
-    const subsheadings = document.querySelectorAll('.subheading');
-    subsheadings.forEach(el => {
+    const observedEls = document.querySelectorAll('[data-observe]');
+    observedEls.forEach(el => {
       if (!el) return;
       observer.observe(el);
     });
@@ -40,7 +40,7 @@ const { title: pageTitle } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
     <meta name="generator" content={Astro.generator} />
     <script
       data-astro-rerun
