@@ -42,7 +42,7 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
             liveUrl && (
               <a
                 href={liveUrl}
-                class="text-[rgb(var(--accent-dark))] opacity-50 hover:opacity-100 transition-opacity"
+                class="text-purple opacity-50 hover:opacity-100 transition-opacity"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -55,7 +55,7 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
             codeUrl && (
               <a
                 href={codeUrl}
-                class="text-[#5EA821] opacity-60 hover:opacity-100 transition-opacity"
+                class="text-green opacity-60 hover:opacity-100 transition-opacity"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -80,7 +80,7 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
         {
           tags.map((tag, index) => (
             <li
-              class={`text-xs tracking-tight font-mono rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-purple-800/10 text-purple-800' : 'bg-[#5EA821]/10 text-[#5EA821]'}`}
+              class={`text-xs tracking-tight font-mono rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-purple-light text-purple' : 'bg-green-light text-green'}`}
             >
               {tag}
             </li>

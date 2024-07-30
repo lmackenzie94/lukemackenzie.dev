@@ -13,7 +13,7 @@ const tint = index % 2 === 0 ? 'bg-[#e6d7fa60]' : 'bg-[#5ea82125]';
 <a
   href={`/blog/${blog.slug}`}
   transition:name={`blog-${title}-card`}
-  class="group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:-translate-y-1 opacity-80 hover:opacity-100 focus:opacity-100"
+  class="group mx-auto max-w-lg bg-white border border-gray-300 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:-translate-y-1 opacity-80 hover:opacity-100 focus:opacity-100"
 >
   <article
     class={`${tint} group-hover:bg-opacity-100 group-focus:bg-opacity-100 transition-colors`}
@@ -22,8 +22,9 @@ const tint = index % 2 === 0 ? 'bg-[#e6d7fa60]' : 'bg-[#5ea82125]';
       src={image.src}
       alt={image.alt}
       format="webp"
-      class="aspect-[2/1] border-b border-gray-200 object-cover object-top opacity-70 transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-focus:grayscale-0 group-focus:opacity-100"
+      class="aspect-[2/1] border-b border-gray-300 object-cover object-top opacity-70 transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-focus:grayscale-0 group-focus:opacity-100"
       widths={[800, 1200, 1600]}
+      loading="eager"
     />
     <div class="p-4 bg-white text-center">
       <p class="text-xs text-gray-400 mb-2">{formattedDate}</p>

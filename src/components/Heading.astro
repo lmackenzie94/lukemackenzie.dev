@@ -5,11 +5,11 @@ interface Props {
 
 const { variant = 'purple' } = Astro.props;
 
-const colour = variant === 'purple' ? 'rgb(var(--accent-dark))' : '#5EA821';
+const colour =
+  variant === 'purple' ? 'rgb(var(--purple))' : 'rgb(var(--green))';
 
-const purpleClasses =
-  'bg-[rgb(var(--accent-dark))] ring-[rgb(var(--accent-dark))]';
-const greenClasses = 'bg-[#5EA821] ring-[#5EA821]';
+const purpleClasses = 'bg-purple ring-purple';
+const greenClasses = 'bg-green ring-green';
 
 const colourClasses = variant === 'purple' ? purpleClasses : greenClasses;
 ---
@@ -34,7 +34,7 @@ const colourClasses = variant === 'purple' ? purpleClasses : greenClasses;
     transform: translateY(-50%) scaleX(0);
     opacity: 0.3;
     z-index: -1;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.2) 0.7s;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.2) 0.5s;
   }
 
   .subheading.visible::before {

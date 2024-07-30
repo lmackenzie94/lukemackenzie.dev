@@ -5,13 +5,16 @@ const { project, index } = Astro.props;
 const { title, tags, images } = project.data;
 const featuredImage = images[0];
 
-const tint = index % 2 === 0 ? 'bg-[#e6d7fa60]' : 'bg-[#5ea82125]';
+const tint = index % 2 === 0 ? 'bg-purple-faded' : 'bg-green-faded';
+
+// eager load first 3 images
+const imageLoading = index < 3 ? 'eager' : 'lazy';
 ---
 
 <a
   href={`/projects/${project.slug}`}
   transition:name={`project-${title}-card`}
-  class="group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:-translate-y-1 opacity-80 hover:opacity-100 focus:opacity-100"
+  class="group mx-auto max-w-lg bg-white border border-gray-300 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:-translate-y-1 opacity-80 hover:opacity-100 focus:opacity-100"
 >
   <article
     class={`${tint} group-hover:bg-opacity-100 group-focus:bg-opacity-100 transition-colors`}
@@ -20,8 +23,9 @@ const tint = index % 2 === 0 ? 'bg-[#e6d7fa60]' : 'bg-[#5ea82125]';
       src={featuredImage.src}
       alt={featuredImage.alt}
       format="webp"
-      class="aspect-[2/1] border-b border-gray-200 object-cover object-top opacity-70 transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-focus:grayscale-0 group-focus:opacity-100"
+      class="aspect-[2/1] border-b border-gray-300 object-cover object-top opacity-70 transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:opacity-100 group-focus:grayscale-0 group-focus:opacity-100"
       widths={[800, 1200, 1600]}
+      loading={imageLoading}
     />
     <div class="p-4 bg-white">
       <h3
@@ -38,7 +42,7 @@ const tint = index % 2 === 0 ? 'bg-[#e6d7fa60]' : 'bg-[#5ea82125]';
         {
           tags.map((tag: string, index: number) => (
             <li
-              class={`text-xxs tracking-tight font-mono rounded-full px-3 py-1 mr-1 mt-2 inline-block ${index % 2 === 0 ? 'bg-purple-800/10 text-purple-800' : 'bg-[#5EA821]/10 text-[#5EA821]'}`}
+              class={`text-xxs tracking-tight font-mono rounded-full px-3 py-1 mr-1 mt-2 inline-block ${index % 2 === 0 ? 'bg-purple-light text-purple' : 'bg-green-light text-green'}`}
             >
               {tag}
             </li>
