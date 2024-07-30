@@ -11,14 +11,14 @@ const formattedDate = formatDate(publishDate);
 <a
   href={`/blog/${blog.slug}`}
   transition:name={`blog-${title}-card`}
-  class="group mx-auto max-w-lg bg-white border border-gray-300 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:-translate-y-1"
+  class="card group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-shadow duration-500 hover:shadow-lg hover:shadow-neutral-200/50"
 >
   <article>
     <Image
       src={image.src}
       alt={image.alt}
       format="webp"
-      class="aspect-[2/1] border-b border-gray-200 object-cover object-top opacity-60 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500"
+      class="aspect-[2/1] border-b border-gray-100 object-cover object-top opacity-60 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500"
       widths={[800, 1200, 1600]}
       loading="eager"
     />
