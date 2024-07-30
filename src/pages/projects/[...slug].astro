@@ -70,7 +70,7 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
       <div
         class="prose prose-sm sm:prose-base prose:text-gray-600 prose-h1:mt-0 prose-a:text-purple-800"
       >
-        <h1 transition:name={`project-${title}-title`}>
+        <h1 class="text-pretty" transition:name={`project-${title}-title`}>
           {title}
         </h1>
         <Content />
@@ -78,7 +78,7 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
 
       <ul transition:name={`project-${title}-tags`} class="mt-8">
         {
-          tags.map((tag, index) => (
+          tags.map((tag: string, index: number) => (
             <li
               class={`text-xs tracking-tight font-mono rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-purple-light text-purple' : 'bg-green-light text-green'}`}
             >

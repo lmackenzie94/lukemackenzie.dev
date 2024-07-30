@@ -47,10 +47,16 @@ import { siteDescription, siteTitle, socials } from '../constants';
     width: 106%;
     left: -3%;
     height: 12%;
-    bottom: 14%;
+    bottom: 16%;
     background: #5ea821;
     position: absolute;
     mix-blend-mode: plus-lighter;
     border-radius: 0.1em;
+  }
+
+  @media screen(sm) {
+    .site-title::after {
+      bottom: 14%;
+    }
   }
 </style>

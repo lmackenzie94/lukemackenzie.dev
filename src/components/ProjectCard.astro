@@ -7,6 +7,8 @@ const featuredImage = images[0];
 
 // eager load first 3 images
 const imageLoading = index < 3 ? 'eager' : 'lazy';
+
+const tagsToShow = tags.slice(0, 3);
 ---
 
 <a
@@ -28,7 +30,7 @@ const imageLoading = index < 3 ? 'eager' : 'lazy';
     >
       <h3
         transition:name={`project-${title}-title`}
-        class="text-2xl font-bold text-center mb-1 text-gray-700 group-hover:text-black group-focus:text-black transition-colors"
+        class="text-pretty text-2xl font-bold text-center mb-1 text-gray-700 group-hover:text-black group-focus:text-black transition-colors"
       >
         {title}
       </h3>
@@ -38,13 +40,20 @@ const imageLoading = index < 3 ? 'eager' : 'lazy';
         class="text-center text-balance saturate-[.3] group-hover:saturate-100 group-focus:saturate-100"
       >
         {
-          tags.map((tag: string, index: number) => (
+          tagsToShow.map((tag: string, index: number) => (
             <li
               class={`text-xxs tracking-tight font-mono rounded-full px-3 py-1 mr-1 mt-2 inline-block ${index % 2 === 0 ? 'bg-purple-light text-purple' : 'bg-green-light text-green'}`}
             >
               {tag}
             </li>
           ))
+        }
+        {
+          tags.length > tagsToShow.length && (
+            <li class="text-xxs tracking-tight font-mono rounded-full px-2 py-1 mr-1 mt-2 inline-block bg-gray-100 text-gray-600">
+              {`+ ${tags.length - tagsToShow.length}`}
+            </li>
+          )
         }
       </ul>
     </div>
