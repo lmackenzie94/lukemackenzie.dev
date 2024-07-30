@@ -1,5 +1,5 @@
 ---
-title: 'Time Tracker (Chrome Extension)'
+title: 'Time Tracker'
 publishDate: 2024-07-25
 images:
   [
