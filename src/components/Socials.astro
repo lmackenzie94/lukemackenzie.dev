@@ -2,7 +2,7 @@
 import { socials } from '../constants';
 ---
 
-<ul transition:name="socials" class="flex gap-2 sm:mb-2">
+<ul transition:name="socials" class="flex gap-2">
   {
     socials.map(social => (
       <li>
@@ -14,7 +14,7 @@ import { socials } from '../constants';
         >
           <p class="sr-only">{social.name}</p>
           <i
-            class={`${social.icon} text-2xl text-purple opacity-30 hover:opacity-60 group-focus:opacity-60 transition-opacity w-10 h-10 flex items-center justify-center`}
+            class={`${social.icon} text-2xl text-purple opacity-40 hover:opacity-60 group-focus:opacity-60 transition-opacity w-10 h-10 flex items-center justify-center`}
           />
         </a>
       </li>

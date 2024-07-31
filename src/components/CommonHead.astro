@@ -1,0 +1,44 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import { siteDescription, siteTitle, siteUrl } from 'src/constants';
+
+const { pageTitle } = Astro.props;
+const metaTitle = `${siteTitle} | ${pageTitle || siteDescription}`;
+const metaDescription =
+  "Hey, I'm Luke! 👋 I'm a Toronto-based front-end web developer with 4+ years of experience seeking full-time employment.";
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{siteTitle} | {pageTitle || siteDescription}</title>
+  <meta name="description" content={metaDescription} />
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content={siteUrl} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={metaTitle} />
+  <meta property="og:description" content={metaDescription} />
+  <meta property="og:image" content="/og-image.jpg" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="twitter:domain" content="lukemackenzie.dev" />
+  <meta property="twitter:url" content={siteUrl} />
+  <meta name="twitter:title" content={metaTitle} />
+  <meta name="twitter:description" content={metaDescription} />
+  <meta name="twitter:image" content="/og-image.jpg" />
+
+  <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>"
+  />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <meta name="generator" content={Astro.generator} />
+  <script
+    data-astro-rerun
+    src="https://kit.fontawesome.com/255fae0f13.js"
+    crossorigin="anonymous"></script>
+
+  <ViewTransitions fallback="swap" />
+</head>

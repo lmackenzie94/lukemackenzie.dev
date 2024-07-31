@@ -1,5 +1,6 @@
 ---
 import { siteDescription, siteTitle, socials } from '../constants';
+import Socials from './Socials.astro';
 ---
 
 <header
@@ -10,27 +11,9 @@ import { siteDescription, siteTitle, socials } from '../constants';
       {siteTitle}
     </p>
   </a>
-  <ul transition:name="socials" class="flex sm:gap-2">
-    {
-      socials.map(social => (
-        <li>
-          <a
-            href={social.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group"
-          >
-            <p class="sr-only">{social.name}</p>
-            <i
-              class={`${social.icon} text-xl lg:text-2xl text-purple opacity-30 hover:opacity-60 group-focus:opacity-60 transition-opacity w-10 h-10 flex items-center justify-center`}
-            />
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <Socials />
   <p
-    class="text-xs sm:text-sm lg:text-base text-black opacity-70 font-mono tracking-tight order-2 sm:order-none mt-1 sm:mt-0"
+    class="text-xs sm:text-sm lg:text-base text-black opacity-60 font-mono tracking-tight order-2 sm:order-none mt-1 sm:mt-0"
   >
     {siteDescription}
   </p>

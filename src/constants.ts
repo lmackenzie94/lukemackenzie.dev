@@ -1,5 +1,6 @@
 export const siteTitle = 'Luke MacKenzie';
 export const siteDescription = 'Web Developer. Toronto.';
+export const siteUrl = 'https://lukemackenzie.dev';
 
 export const socials = [
   {
