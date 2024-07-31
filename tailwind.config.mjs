@@ -20,6 +20,12 @@ export default {
         heading: ['Lilita One', 'sans-serif']
       },
       colors: {
+        white: {
+          DEFAULT: 'rgb(var(--white))'
+        },
+        black: {
+          DEFAULT: 'rgb(var(--black))'
+        },
         purple: {
           DEFAULT: 'rgb(var(--purple))',
           light: 'rgb(var(--purple-light))',
