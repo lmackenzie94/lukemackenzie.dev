@@ -4,6 +4,10 @@ import Footer from '@components/Footer.astro';
 import { siteTitle } from '../constants';
 // import Canvas from '@components/Canvas.astro';
 
+import '@fontsource/caprasimo'; // Supports weights 100-700
+import '@fontsource-variable/roboto-mono';
+import '@fontsource/lilita-one';
+
 interface Props {
   title: string;
 }
@@ -46,8 +50,10 @@ const { title: pageTitle } = Astro.props;
       data-astro-rerun
       src="https://kit.fontawesome.com/255fae0f13.js"
       crossorigin="anonymous"></script>
+
     <title>{pageTitle} | {siteTitle}</title>
     <meta name="description" content="Web Developer. Toronto." />
+
     <ViewTransitions fallback="swap" />
   </head>
   <body class="flex flex-col min-h-screen">

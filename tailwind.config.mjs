@@ -14,6 +14,11 @@ export default {
       }
     },
     extend: {
+      fontFamily: {
+        display: ['Caprasimo', 'sans-serif'],
+        mono: ['Roboto Mono Variable', 'monospace'],
+        heading: ['Lilita One', 'sans-serif']
+      },
       colors: {
         purple: {
           DEFAULT: 'rgb(var(--purple))',

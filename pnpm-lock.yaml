@@ -11,6 +11,15 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^5.1.0
     version: 5.1.0(astro@4.11.5)(tailwindcss@3.4.4)
+  '@fontsource-variable/roboto-mono':
+    specifier: ^5.0.19
+    version: 5.0.19
+  '@fontsource/caprasimo':
+    specifier: ^5.0.5
+    version: 5.0.5
+  '@fontsource/lilita-one':
+    specifier: ^5.0.20
+    version: 5.0.20
   astro:
     specifier: ^4.11.5
     version: 4.11.5(typescript@5.5.3)
@@ -656,6 +665,18 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@fontsource-variable/roboto-mono@5.0.19:
+    resolution: {integrity: sha512-EGHx+Av6qNZf1XUM69eE1dwG3vtZHTpRETlkgt9BoRcN0T9xG+Boo/TzznmhI40CLI1zwBjmglEIu2qNI462Vw==}
+    dev: false
+
+  /@fontsource/caprasimo@5.0.5:
+    resolution: {integrity: sha512-LPakW1zcR/5g6zkZi+8ewhCRjKAUFse8ie7fC9UJgZ9LCyT94ezz6IlisMj7EUhNTR8hmqNQdkR4yl6m38SA1A==}
+    dev: false
+
+  /@fontsource/lilita-one@5.0.20:
+    resolution: {integrity: sha512-+BCAjg9MH0Kj+Wngm9yHMNzIW8MQrOay2luIRyxVCT10r0v8Bfrrou4dd0dQAVTL7z3lGMTOA/xhHZZtpHFVbg==}
+    dev: false
 
   /@img/sharp-darwin-arm64@0.33.4:
     resolution: {integrity: sha512-p0suNqXufJs9t3RqLBO6vvrgr5OhgbWp76s5gTRvdmxmuv9E1rcaqGUsl3l4mKVmXPkTkTErXediAui4x+8PSA==}

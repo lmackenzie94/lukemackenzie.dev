@@ -13,8 +13,9 @@ const formattedDate = formatDate(publishDate);
   class="card group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-shadow duration-500 hover:shadow-lg hover:shadow-neutral-200/50"
   data-tilt
   data-tilt-max="5"
-  data-tilt-scale="1.02"
+  data-tilt-scale="1.04"
   data-tilt-reverse="true"
+  data-tilt-speed="1500"
 >
   <article class="h-full overflow-hidden">
     <Image
@@ -29,11 +30,11 @@ const formattedDate = formatDate(publishDate);
     <div
       class="p-4 bg-white h-full text-center shadow-[0_-5px_20px_0_rgba(0,0,0,0.1)] group-hover:shadow-none group-focus:shadow-none transition-shadow duration-500"
     >
-      <time class="text-xs text-gray-400" datetime={formattedDate}
+      <time class="text-xxs text-gray-400 font-mono" datetime={formattedDate}
         >{formattedDate}</time
       >
       <h3
-        class="text-pretty text-2xl font-bold text-gray-700 group-hover:text-black group-focus:text-black transition-colors"
+        class="text-pretty text-3xl font-heading text-gray-600 group-hover:text-black group-focus:text-black transition-colors"
       >
         {title}
       </h3>

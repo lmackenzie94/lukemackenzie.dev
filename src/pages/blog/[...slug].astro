@@ -37,7 +37,7 @@ const formattedDate = formatDate(publishDate);
           headings.map((heading, index) => (
             <a
               href={`#${heading.slug}`}
-              class={`text-xs rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-purple-light text-purple' : 'bg-green-light text-green'}`}
+              class={`text-xxs font-mono rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-purple-light text-purple' : 'bg-green-light text-green'}`}
             >
               <span class="text-gray-400">#</span>
               {heading.text}
@@ -47,13 +47,13 @@ const formattedDate = formatDate(publishDate);
       </div>
 
       <div
-        class="prose prose-sm sm:prose-base prose:text-gray-600 prose-h1:mb-0 prose-a:text-purple"
+        class="prose prose-sm sm:prose-base prose:text-gray-600 prose-h1:mb-0 prose-a:text-purple prose-headings:font-heading"
       >
         <h1 class="text-pretty">
           {title}
         </h1>
 
-        <time class="text-xs text-gray-400" datetime={formattedDate}
+        <time class="text-xs text-gray-400 font-mono" datetime={formattedDate}
           >{formattedDate}</time
         >
         <Content />

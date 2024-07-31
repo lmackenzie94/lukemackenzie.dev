@@ -14,11 +14,12 @@ const tagsToShow = tags.slice(0, 3);
 <a
   transition:name={`project-${title}-card`}
   href={`/projects/${project.slug}`}
-  class="card group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-shadow duration-500 hover:shadow-lg hover:shadow-neutral-200/50"
+  class="card group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-shadow duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:z-10 focus:z-10"
   data-tilt
   data-tilt-max="5"
-  data-tilt-scale="1.02"
+  data-tilt-scale="1.04"
   data-tilt-reverse="true"
+  data-tilt-speed="1500"
 >
   <article class="h-full">
     <Image
@@ -34,7 +35,7 @@ const tagsToShow = tags.slice(0, 3);
     >
       <h3
         transition:name={`project-${title}-title`}
-        class="text-pretty text-2xl font-bold text-center mb-1 text-gray-700 group-hover:text-black group-focus:text-black transition-colors"
+        class="text-pretty text-3xl font-heading text-center mb-1 text-gray-600 group-hover:text-black group-focus:text-black transition-colors"
       >
         {title}
       </h3>
