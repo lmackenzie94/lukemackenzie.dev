@@ -1,7 +1,7 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 import Footer from '@components/Footer.astro';
-import { siteTitle } from '../constants';
+import { siteDescription, siteTitle } from '../constants';
 // import Canvas from '@components/Canvas.astro';
 
 import '@fontsource/caprasimo'; // Supports weights 100-700
@@ -9,7 +9,7 @@ import '@fontsource-variable/roboto-mono';
 import '@fontsource/lilita-one';
 
 interface Props {
-  title: string;
+  title?: string;
 }
 
 const { title: pageTitle } = Astro.props;
@@ -43,7 +43,11 @@ const { title: pageTitle } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👋</text></svg>"
+    />
+
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
     <script
@@ -51,7 +55,7 @@ const { title: pageTitle } = Astro.props;
       src="https://kit.fontawesome.com/255fae0f13.js"
       crossorigin="anonymous"></script>
 
-    <title>{pageTitle} | {siteTitle}</title>
+    <title>{siteTitle} | {pageTitle || siteDescription}</title>
     <meta
       name="description"
       content="Hey, I'm Luke! 👋 I'm a Toronto-based front-end web developer with 4+ years of experience seeking full-time employment."
