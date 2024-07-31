@@ -17,7 +17,8 @@ export default {
       fontFamily: {
         display: ['Caprasimo', 'sans-serif'],
         mono: ['Roboto Mono Variable', 'monospace'],
-        heading: ['Lilita One', 'sans-serif']
+        heading: ['Lilita One', 'sans-serif'],
+        body: ['Open Sans Variable', 'sans-serif']
       },
       colors: {
         white: {

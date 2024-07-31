@@ -14,6 +14,9 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^5.1.0
     version: 5.1.0(astro@4.11.5)(tailwindcss@3.4.4)
+  '@fontsource-variable/open-sans':
+    specifier: ^5.0.29
+    version: 5.0.29
   '@fontsource-variable/roboto-mono':
     specifier: ^5.0.19
     version: 5.0.19
@@ -676,6 +679,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@fontsource-variable/open-sans@5.0.29:
+    resolution: {integrity: sha512-p8T55iQwhErREcjY997t4ah9JKTyJNSBDDVfvVsWIQRGpA2fcTPk9rLue/Mkrr5/efkehxTSbT8JpTTRaFbM5A==}
+    dev: false
 
   /@fontsource-variable/roboto-mono@5.0.19:
     resolution: {integrity: sha512-EGHx+Av6qNZf1XUM69eE1dwG3vtZHTpRETlkgt9BoRcN0T9xG+Boo/TzznmhI40CLI1zwBjmglEIu2qNI462Vw==}
