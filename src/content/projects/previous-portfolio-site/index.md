@@ -1,12 +1,9 @@
 ---
-title: 'My Previous Portfolio Site'
+title: 'My Old Portfolio Site'
 publishDate: 2024-07-24
 images:
   [
-    {
-      src: './image-1.jpeg',
-      alt: "Home page of Luke's previous portfolio site"
-    },
+    { src: './image-1.jpeg', alt: "Home page of Luke's old portfolio site" },
     { src: './image-2.webp', alt: 'Custom Sanity CMS' }
   ]
 tags: ['React', 'Gatsby', 'Sanity', 'ThemeUI', 'Cypress']
