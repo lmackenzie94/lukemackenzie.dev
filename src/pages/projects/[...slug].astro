@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import Carousel from '../../components/Carousel.astro';
+import Carousel from '@components/Carousel.astro';
 import { Image } from 'astro:assets';
-import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import ProjectLayout from '@layouts/ProjectLayout.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -70,13 +70,13 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
       <div
         class="prose prose-sm sm:prose-base prose:text-gray-600 prose-h1:mt-0 prose-a:text-purple-800"
       >
-        <h1 class="text-pretty" transition:name={`project-${title}-title`}>
+        <h1 transition:name={`project-${title}-title`} class="text-pretty">
           {title}
         </h1>
         <Content />
       </div>
 
-      <ul transition:name={`project-${title}-tags`} class="mt-8">
+      <ul class="mt-8">
         {
           tags.map((tag: string, index: number) => (
             <li

@@ -1,9 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import ProjectList from '../components/ProjectList.astro';
-import BlogList from '../components/BlogList.astro';
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/Hero.astro';
+import ProjectList from '@components/ProjectList.astro';
+import BlogList from '@components/BlogList.astro';
 ---
+
+<script src="../scripts/vanilla-tilt.min.js"></script>
 
 <Layout title="Home">
   <Hero />
@@ -13,20 +15,3 @@ import BlogList from '../components/BlogList.astro';
     <BlogList />
   </main>
 </Layout>
-
-<script>
-  import VanillaTilt from 'vanilla-tilt';
-  document.addEventListener('astro:page-load', () => {
-    const tiltEls = Array.from(
-      document.querySelectorAll('.card')
-    ) as HTMLElement[];
-
-    VanillaTilt.init(tiltEls, {
-      reverse: true,
-      max: 5,
-      glare: true,
-      'max-glare': 0.2,
-      scale: 1.02
-    });
-  });
-</script>

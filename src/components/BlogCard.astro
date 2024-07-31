@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { formatDate } from '../utils';
+import { formatDate } from '@utils/index';
 
 const { blog, index } = Astro.props;
 const { title, image, publishDate } = blog.data;
@@ -10,24 +10,29 @@ const formattedDate = formatDate(publishDate);
 
 <a
   href={`/blog/${blog.slug}`}
-  transition:name={`blog-${title}-card`}
   class="card group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-shadow duration-500 hover:shadow-lg hover:shadow-neutral-200/50"
+  data-tilt
+  data-tilt-max="5"
+  data-tilt-scale="1.02"
+  data-tilt-reverse="true"
 >
-  <article class="h-full">
+  <article class="h-full overflow-hidden">
     <Image
       src={image.src}
       alt={image.alt}
       format="webp"
-      class="aspect-[2/1] border-b border-gray-100 object-cover object-top opacity-60 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500"
+      class="aspect-[2/1] border-b border-gray-100 object-cover object-top opacity-70 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 overflow-hidden"
       widths={[800, 1200, 1600]}
       loading="eager"
     />
+
     <div
       class="p-4 bg-white h-full text-center shadow-[0_-5px_20px_0_rgba(0,0,0,0.1)] group-hover:shadow-none group-focus:shadow-none transition-shadow duration-500"
     >
-      <p class="text-xs text-gray-400 mb-2">{formattedDate}</p>
+      <time class="text-xs text-gray-400" datetime={formattedDate}
+        >{formattedDate}</time
+      >
       <h3
-        transition:name={`blog-${title}-title`}
         class="text-pretty text-2xl font-bold text-gray-700 group-hover:text-black group-focus:text-black transition-colors"
       >
         {title}

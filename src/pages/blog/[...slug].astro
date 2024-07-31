@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogLayout from '../../layouts/BlogLayout.astro';
+import BlogLayout from '@layouts/BlogLayout.astro';
 import { Image } from 'astro:assets';
-import { formatDate } from '../../utils';
+import { formatDate } from '@utils/index.ts';
 
 export async function getStaticPaths() {
   const blogs = await getCollection('blog');
@@ -15,15 +15,13 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
-// console.log(headings);
-
 const { title, publishDate, image } = entry.data;
 const formattedDate = formatDate(publishDate);
 ---
 
 <BlogLayout title={title}>
   <article
-    transition:name={`blog-${title}-card`}
+    transition:animate="slide"
     class="bg-white border border-gray-200 rounded-2xl shadow-lg shadow-neutral-200/50 overflow-hidden relative"
   >
     <div class="p-6 md:p-8">
@@ -51,7 +49,7 @@ const formattedDate = formatDate(publishDate);
       <div
         class="prose prose-sm sm:prose-base prose:text-gray-600 prose-h1:mb-0 prose-a:text-purple"
       >
-        <h1 transition:name={`blog-${title}-title`} class="text-pretty">
+        <h1 class="text-pretty">
           {title}
         </h1>
 

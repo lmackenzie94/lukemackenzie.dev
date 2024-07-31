@@ -6,10 +6,7 @@ import { siteDescription, siteTitle, socials } from '../constants';
   class="container flex flex-col sm:flex-row justify-between items-center mb-8 py-8"
 >
   <a href="/" class="order-1 sm:order-none">
-    <p
-      transition:name="site-title"
-      class="site-title text-gradient text-2xl lg:text-3xl font-black relative"
-    >
+    <p class="site-title text-gradient text-2xl font-black relative">
       {siteTitle}
     </p>
   </a>
@@ -33,14 +30,13 @@ import { siteDescription, siteTitle, socials } from '../constants';
     }
   </ul>
   <p
-    transition:name="site-subtitle"
     class="text-xs sm:text-sm lg:text-base text-gray-600 font-mono tracking-tight order-2 sm:order-none mt-1 sm:mt-0"
   >
     {siteDescription}
   </p>
 </header>
 
-<style>
+<!-- <style>
   .site-title::after {
     content: '';
     display: block;
@@ -59,4 +55,4 @@ import { siteDescription, siteTitle, socials } from '../constants';
       bottom: 14%;
     }
   }
-</style>
+</style> -->

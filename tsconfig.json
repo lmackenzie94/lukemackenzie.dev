@@ -1,7 +1,16 @@
 {
   "extends": "astro/tsconfigs/strict",
-  // dont fail build on error
+  // // dont fail build on error
+  // "compilerOptions": {
+  //   "noEmitOnError": false
+  // }
   "compilerOptions": {
-    "noEmitOnError": false
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@pages/*": ["src/pages/*"],
+      "@utils/*": ["src/utils/*"]
+    }
   }
 }

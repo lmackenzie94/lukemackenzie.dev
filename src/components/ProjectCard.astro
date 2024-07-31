@@ -12,16 +12,20 @@ const tagsToShow = tags.slice(0, 3);
 ---
 
 <a
-  href={`/projects/${project.slug}`}
   transition:name={`project-${title}-card`}
+  href={`/projects/${project.slug}`}
   class="card group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-shadow duration-500 hover:shadow-lg hover:shadow-neutral-200/50"
+  data-tilt
+  data-tilt-max="5"
+  data-tilt-scale="1.02"
+  data-tilt-reverse="true"
 >
   <article class="h-full">
     <Image
       src={featuredImage.src}
       alt={featuredImage.alt}
       format="webp"
-      class="aspect-[2/1] border-b border-gray-100 object-cover object-top opacity-60 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500"
+      class="aspect-[2/1] border-b border-gray-100 object-cover object-top opacity-70 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500"
       widths={[800, 1200, 1600]}
       loading={imageLoading}
     />
@@ -36,7 +40,6 @@ const tagsToShow = tags.slice(0, 3);
       </h3>
 
       <ul
-        transition:name={`project-${title}-tags`}
         class="text-center text-balance saturate-[.3] group-hover:saturate-100 group-focus:saturate-100"
       >
         {
@@ -59,3 +62,16 @@ const tagsToShow = tags.slice(0, 3);
     </div>
   </article>
 </a>
+
+<style is:global>
+  @keyframes fadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
