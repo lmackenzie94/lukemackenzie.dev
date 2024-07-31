@@ -41,12 +41,12 @@ const tagsToShow = tags.slice(0, 3);
       </h3>
 
       <ul
-        class="text-center text-balance saturate-[.3] group-hover:saturate-100 group-focus:saturate-100"
+        class="flex flex-wrap gap-1 justify-center saturate-[.3] group-hover:saturate-100 group-focus:saturate-100 mt-2"
       >
         {
           tagsToShow.map((tag: string, index: number) => (
             <li
-              class={`text-xxs tracking-tight font-mono rounded-full px-3 py-1 mr-1 mt-2 inline-block ${index % 2 === 0 ? 'bg-purple-light text-purple' : 'bg-green-light text-green'}`}
+              class={`text-xxs tracking-tight font-mono rounded-full px-3 py-1 inline-block ${index % 2 === 0 ? 'bg-purple-light text-purple' : 'bg-green-light text-green'}`}
             >
               {tag}
             </li>
@@ -54,7 +54,7 @@ const tagsToShow = tags.slice(0, 3);
         }
         {
           tags.length > tagsToShow.length && (
-            <li class="text-xxs tracking-tight font-mono rounded-full px-2 py-1 mr-1 mt-2 inline-block bg-gray-100 text-gray-600">
+            <li class="text-xxs tracking-tight font-mono rounded-full px-2 py-1 inline-block bg-gray-100 text-gray-600">
               {`+ ${tags.length - tagsToShow.length}`}
             </li>
           )
