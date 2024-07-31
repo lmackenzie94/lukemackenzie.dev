@@ -4,34 +4,30 @@ import Socials from './Socials.astro';
 ---
 
 <section
-  class="container flex flex-col justify-center items-center pt-20 sm:pt-36 pb-24 z-10 relative font-display"
+  class="container flex flex-col justify-center items-center pt-20 sm:pt-36 pb-16 sm:pb-24 z-10 relative font-display"
 >
   <Socials />
 
-  <h1
-    class="text-gradient text-4xl sm:text-5xl lg:text-6xl font-black relative"
-  >
+  <h1 class="text-gradient text-[2.55rem] sm:text-6xl lg:text-7xl relative">
     {siteTitle}
   </h1>
   <p
-    class="text-base sm:text-lg lg:text-xl text-gray-600 mt-2 font-mono tracking-tight"
+    class="text-base sm:text-lg lg:text-xl text-black opacity-50 sm:mt-2 font-mono tracking-tight"
   >
     {siteDescription}
   </p>
 
   <div
     aria-hidden="true"
-    class="hidden sm:flex absolute top-[50%] lg:top-[45%] w-full justify-between max-w-4xl text-7xl lg:text-8xl md:px-4 text-purple"
+    class="hidden sm:flex absolute sm:top-[50%] md:top-[45%] w-full justify-between max-w-4xl text-6xl sm:text-7xl md:text-8xl md:px-4 text-purple"
   >
     <span
-      aria-hidden="true"
       data-observe
       class="opacity-0 font-bold transition-all -translate-x-10 duration-200 delay-100"
     >
       &nbsp;{`<`}
     </span>
     <span
-      aria-hidden="true"
       data-observe
       class="opacity-0 font-bold transition-all translate-x-10 duration-200 delay-100"
     >
@@ -62,10 +58,10 @@ import Socials from './Socials.astro';
     h1::after {
       content: '';
       display: block;
-      width: 110%;
-      left: -5%;
-      height: 15%;
-      bottom: 7%;
+      width: 106%;
+      left: -3%;
+      height: 12%;
+      bottom: 20%;
       background: rgb(var(--accent-inverse));
       position: absolute;
       mix-blend-mode: plus-lighter;
@@ -75,7 +71,8 @@ import Socials from './Socials.astro';
 
     @media screen(sm) {
       h1::after {
-        bottom: 5%;
+        height: 17%;
+        bottom: 6%;
       }
     }
 
