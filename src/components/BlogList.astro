@@ -12,7 +12,7 @@ blog.sort(
 );
 ---
 
-<Heading variant="green">Blog</Heading>
+<Heading id="blog" variant="green">Blog</Heading>
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-10">
   {blog.map((blog, index) => <BlogCard blog={blog} index={index} />)}
 </div>

@@ -1,9 +1,10 @@
 ---
 interface Props {
+  id: string;
   variant?: 'purple' | 'green';
 }
 
-const { variant = 'purple' } = Astro.props;
+const { variant = 'purple', id } = Astro.props;
 
 const colour =
   variant === 'purple' ? 'rgb(var(--purple))' : 'rgb(var(--green))';
@@ -14,7 +15,11 @@ const greenClasses = 'bg-green ring-green';
 const colourClasses = variant === 'purple' ? purpleClasses : greenClasses;
 ---
 
-<div data-observe class="subheading text-center relative mb-8 sm:mb-12">
+<div
+  id={`${id}-heading`}
+  data-observe
+  class="subheading text-center relative mb-8 sm:mb-12"
+>
   <h2
     class={`${colourClasses} text-lg sm:text-xl tracking-wider font-display inline-block text-white px-5 py-1 rounded-full ring-1 ring-offset-2 min-w-32 sm:min-w-36`}
   >

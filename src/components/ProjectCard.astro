@@ -14,8 +14,7 @@ const tagsToShow = tags.slice(0, 3);
 <a
   transition:name={`project-${title}-card`}
   href={`/projects/${project.slug}`}
-  class="card block group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-shadow duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:z-10 focus:z-10 hover:border-gray-300"
-  data-tilt
+  class="card project-card block group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-shadow duration-500 hover:shadow-lg hover:shadow-neutral-200/50 hover:z-10 focus:z-10 hover:border-gray-300"
   data-tilt-max="5"
   data-tilt-scale="1.04"
   data-tilt-reverse="true"
@@ -66,15 +65,101 @@ const tagsToShow = tags.slice(0, 3);
   </article>
 </a>
 
-<style is:global>
-  @keyframes fadeUp {
-    0% {
-      opacity: 0;
-      transform: translateY(50px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+<style>
+  .project-card {
+    opacity: 0;
+  }
+
+  .project-card.show {
+    opacity: 1;
+    transition: transform 0.4s ease-in-out;
   }
 </style>
+
+<script>
+  import VanillaTilt from 'vanilla-tilt';
+
+  function initTilt() {
+    // force vanilla-tilt to re-execute
+    // not sure if this is the best way to do this but needs to be done if using ViewTransitions
+    // otherwise changing the page and returning to the home page will cause the tilt to not work
+    const cards = Array.from(document.querySelectorAll('.project-card'));
+    cards.forEach(card => {
+      card.setAttribute('data-tilt', '');
+    });
+
+    const els = Array.from(
+      document.querySelectorAll('[data-tilt]')
+    ) as HTMLElement[];
+
+    VanillaTilt.init(els);
+  }
+
+  document.addEventListener(
+    'astro:page-load',
+    () => {
+      window.doneCardAnimation = true;
+
+      const cards = Array.from(document.querySelectorAll('.project-card'));
+
+      const projectsHeading = document.querySelector('#projects-heading');
+      const projectsHeadingRect = projectsHeading.getBoundingClientRect();
+
+      const startingPosition = {
+        x: window.innerWidth / 2 - cards[0].getBoundingClientRect().width / 2,
+        y: projectsHeadingRect.y + projectsHeadingRect.height * 2.5
+      };
+
+      // const referenceCard = cards[1];
+      // const referenceCardRect = referenceCard.getBoundingClientRect();
+
+      // position all other cards in the exact same position as the reference card
+      cards.forEach(card => {
+        const cardRect = card.getBoundingClientRect();
+        const rotation = Math.random() * 10 - 5;
+        card.style.transform = `translateX(${startingPosition.x - cardRect.x}px) translateY(${startingPosition.y - cardRect.y}px) rotate(${rotation}deg)`;
+      });
+
+      const delay = 180;
+      setTimeout(() => {
+        cards.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.add('show');
+          }, index * delay);
+        });
+      }, 0);
+
+      setTimeout(
+        () => {
+          cards.reverse().forEach((card: HTMLDivElement, index: number) => {
+            setTimeout(() => {
+              card.style.transform = `translateX(0) translateY(0) rotate(0deg)`;
+
+              if (index === cards.length - 1) {
+                setTimeout(() => {
+                  initTilt();
+                  document.addEventListener('astro:page-load', initTilt);
+                }, 1000);
+              }
+            }, index * 50);
+          });
+        },
+        delay * cards.length + 200
+      );
+    },
+    { once: true }
+  );
+</script>
+
+<script>
+  document.addEventListener('astro:after-swap', () => {
+    if (window.doneCardAnimation) {
+      const cards = Array.from(document.querySelectorAll('.project-card'));
+      cards.forEach(card => {
+        card.classList.add('show');
+      });
+
+      initTilt();
+    }
+  });
+</script>

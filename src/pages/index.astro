@@ -5,20 +5,6 @@ import ProjectList from '@components/ProjectList.astro';
 import BlogList from '@components/BlogList.astro';
 ---
 
-<script>
-  import VanillaTilt from 'vanilla-tilt';
-  document.addEventListener('astro:page-load', () => {
-    // force vanilla-tilt to re-execute
-    // not sure if this is the best way to do this but needs to be done if using ViewTransitions
-    // otherwise changing the page and returning to the home page will cause the tilt to not work
-    const els = Array.from(
-      document.querySelectorAll('[data-tilt]')
-    ) as HTMLElement[];
-
-    VanillaTilt.init(els);
-  });
-</script>
-
 <Layout>
   <Hero />
 
