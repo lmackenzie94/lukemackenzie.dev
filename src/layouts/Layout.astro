@@ -58,6 +58,10 @@ const { title: pageTitle } = Astro.props;
         --purple: 157, 89, 129;
         --red: 181, 62, 66;
         --turquoise: 62, 181, 177;
+        --gray: 85, 85, 85;
+        --gray2: 150, 150, 150;
+        --pink: 198, 13, 188;
+        --greenBright: 13, 198, 24;
 
         --primary-light: rgba(var(--primary), 0.1);
         --primary-lighter: rgba(var(--primary), 0.05);
@@ -111,6 +115,16 @@ const { title: pageTitle } = Astro.props;
       html[data-theme='turquoise'] {
         --primary: var(--turquoise);
         --secondary: var(--red);
+      }
+
+      html[data-theme='pink'] {
+        --primary: var(--pink);
+        --secondary: var(--greenBright);
+      }
+
+      html[data-theme='gray'] {
+        --primary: var(--gray);
+        --secondary: var(--gray2);
       }
 
       ::-webkit-scrollbar {

@@ -1,9 +1,18 @@
 ---
-const themes = ['green', 'purple', 'blue', 'brown', 'red', 'turquoise'];
+const themes = [
+  'green',
+  'purple',
+  'blue',
+  'brown',
+  'red',
+  'turquoise',
+  'pink',
+  'gray'
+];
 ---
 
-<div class="absolute top-3 left-1/2 transform -translate-x-1/2 z-20">
-  <div class="flex flex-wrap gap-2 items-center">
+<div class="absolute top-3 w-full z-20">
+  <div class="flex flex-wrap gap-2 justify-center items-center">
     {
       themes.map(theme => (
         <button
@@ -19,9 +28,7 @@ const themes = ['green', 'purple', 'blue', 'brown', 'red', 'turquoise'];
 </div>
 
 <script>
-  type Theme = 'green' | 'purple' | 'blue' | 'brown' | 'red' | 'turquoise';
-
-  function activateTheme(theme: Theme, trigger: 'click' | 'page-load') {
+  function activateTheme(theme: string, trigger: 'click' | 'page-load') {
     document.documentElement.setAttribute('data-theme', theme);
 
     const heroTags = document.querySelectorAll('.open-tag, .close-tag');
@@ -60,14 +67,12 @@ const themes = ['green', 'purple', 'blue', 'brown', 'red', 'turquoise'];
   }
 
   document.addEventListener('astro:page-load', () => {
-    const theme = localStorage.getItem('theme') as Theme;
+    const theme = localStorage.getItem('theme');
 
     if (theme) {
       activateTheme(theme, 'page-load');
     } else {
-      const activeTheme = document.documentElement.getAttribute(
-        'data-theme'
-      ) as Theme;
+      const activeTheme = document.documentElement.getAttribute('data-theme');
 
       if (activeTheme) {
         activateTheme(activeTheme, 'page-load');
@@ -81,7 +86,7 @@ const themes = ['green', 'purple', 'blue', 'brown', 'red', 'turquoise'];
     // TODO: do this better...
     themeButtons.forEach(button => {
       button.addEventListener('click', () => {
-        const theme = button.dataset.theme as Theme;
+        const theme = button.dataset.theme;
         if (theme) {
           activateTheme(theme, 'click');
         }
