@@ -50,7 +50,7 @@ export default {
       keyframes: {
         flash: {
           '0%, 100%': { opacity: 1 },
-          '50%': { opacity: 0.3 }
+          '50%': { opacity: 0.1 }
         }
       }
     }

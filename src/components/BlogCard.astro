@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import { formatDate } from '@utils/index';
 
-const { blog, index } = Astro.props;
+const { blog } = Astro.props;
 const { title, image, publishDate } = blog.data;
 
 const formattedDate = formatDate(publishDate);
@@ -10,7 +10,7 @@ const formattedDate = formatDate(publishDate);
 
 <a
   href={`/blog/${blog.slug}`}
-  class="card block group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-shadow duration-500 shadow-md shadow-neutral-200/30 hover:shadow-neutral-200/70 hover:shadow-lg hover:border-gray-300"
+  class="card blog-card block group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-shadow duration-500 shadow-md shadow-neutral-200/30 hover:shadow-neutral-200/70 hover:shadow-lg hover:border-gray-300"
   data-tilt
   data-tilt-max="5"
   data-tilt-scale="1.04"

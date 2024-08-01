@@ -36,6 +36,10 @@ import Socials from './Socials.astro';
   </div>
 
   <style>
+    body:has(.disco-scene.playing) p {
+      color: rgb(var(--white));
+    }
+
     h1::after {
       content: '';
       display: block;

@@ -1,0 +1,89 @@
+---
+import discoBall from '@assets/disco-ball.svg';
+
+const numOfLights = 25;
+const sizeMin = 100;
+const sizeMax = 200;
+const blurSize = 30;
+const colorRange = [
+  '#FF5733', // Bright Orange
+  '#33FF57', // Neon Green
+  '#5733FF', // Electric Blue
+  '#FF33A8', // Hot Pink
+  '#33FFF5', // Aqua Blue
+  '#FF33FF', // Fuchsia
+  '#FFDD33', // Golden Yellow
+  '#33FFDD', // Turquoise
+  '#FF3333', // Bright Red
+  '#33FF85' // Lime Green
+];
+---
+
+<div class="disco-scene fixed inset-0 bg-gray-800">
+  <div class="disco-lights origin-center">
+    {
+      Array.from({ length: numOfLights }, (_, i) => {
+        const size = sizeMin + Math.floor(Math.random() * (sizeMax - sizeMin));
+        const color = colorRange[Math.floor(Math.random() * colorRange.length)];
+        // position the lights randomly (0% to 100%)
+        const x = Math.floor(Math.random() * 100);
+        const y = Math.floor(Math.random() * 100);
+
+        return (
+          <div
+            class="light rounded-full w-12 h-12 absolute animate-flash"
+            style={`translate: ${x}vw ${y}vh; background-image: radial-gradient(circle, ${color} 0%, transparent 100%); filter: blur(${blurSize}px); width: ${size}px; height: ${size}px; animation-delay: ${i * 0.1}s`}
+          />
+        );
+      })
+    }
+  </div>
+
+  <div
+    class="disco-ball absolute -top-3 -right-6 sm:right-8 w-[15%] min-w-28 -translate-y-full"
+  >
+    <img
+      src={discoBall.src}
+      alt="disco ball"
+      width={discoBall.width}
+      height={discoBall.height}
+    />
+  </div>
+</div>
+
+<style>
+  @keyframes swing {
+    0%,
+    50%,
+    100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(6deg);
+    }
+    75% {
+      transform: rotate(-6deg);
+    }
+  }
+  .disco-scene {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .disco-scene.playing {
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+  }
+
+  .disco-scene .disco-ball {
+    filter: drop-shadow(0px 0px 5vw #ffffff);
+    transition: transform 0.2s ease-out;
+  }
+
+  .disco-scene.playing .disco-ball {
+    transform: translateY(0);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    transform-origin: center top;
+    animation: swing 2s linear infinite 0.4s;
+  }
+</style>

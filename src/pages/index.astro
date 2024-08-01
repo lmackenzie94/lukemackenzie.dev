@@ -4,18 +4,11 @@ import Hero from '@components/Hero.astro';
 import ProjectList from '@components/ProjectList.astro';
 import BlogList from '@components/BlogList.astro';
 import ThemePicker from '@components/ThemePicker.astro';
-
-const themes: string[] = [
-  'green',
-  'purple',
-  'blue',
-  'brown',
-  'red',
-  'turquoise'
-];
+import Disco from '@components/Disco.astro';
 ---
 
 <Layout>
+  <Disco />
   <ThemePicker />
   <Hero />
   <main class="container z-10 flex-1">
@@ -23,3 +16,12 @@ const themes: string[] = [
     <BlogList />
   </main>
 </Layout>
+
+<style>
+  body:has(.disco-scene.playing) {
+    .project-card,
+    .blog-card {
+      opacity: 0.3;
+    }
+  }
+</style>

@@ -1,17 +1,10 @@
 ---
-const themes = [
-  'green',
-  'purple',
-  'blue',
-  'brown',
-  'red',
-  'turquoise',
-  'pink',
-  'gray'
-];
+import discoBall from '@assets/disco-ball-no-sparkles.svg';
+
+const themes = ['green', 'purple', 'blue', 'brown', 'red', 'turquoise', 'pink'];
 ---
 
-<div class="absolute top-3 w-full z-20">
+<div class="absolute top-2 w-full z-20">
   <div class="flex flex-wrap gap-2 justify-center items-center">
     {
       themes.map(theme => (
@@ -24,6 +17,17 @@ const themes = [
         />
       ))
     }
+    <button
+      class="disco-button w-9 h-auto relative -top-[5px] right-[6px]"
+      aria-label="Play disco"
+    >
+      <img
+        src={discoBall.src}
+        alt="disco ball"
+        width={discoBall.width}
+        height={discoBall.height}
+      />
+    </button>
   </div>
 </div>
 
@@ -97,6 +101,35 @@ const themes = [
     });
   });
 
+  function playDisco() {
+    discoAudio.currentTime = 0;
+    const discoScene = document.querySelector('.disco-scene');
+    if (discoScene) {
+      if (discoScene.classList.contains('playing')) {
+        discoScene.classList.remove('playing');
+        discoAudio.pause();
+        clearTimeout(discoTimer);
+      } else {
+        discoScene.classList.add('playing');
+        discoAudio.play();
+        discoTimer = setTimeout(() => {
+          discoScene.classList.remove('playing');
+          discoAudio.pause();
+        }, 8000);
+      }
+    }
+  }
+
+  let discoTimer: ReturnType<typeof setTimeout>;
+  let discoAudio: HTMLAudioElement = new Audio('/disco.mp3');
+  discoAudio.volume = 0.2;
+
+  const discoButton = document.querySelector('.disco-button');
+
+  if (discoButton) {
+    discoButton.addEventListener('click', playDisco);
+  }
+
   document.addEventListener('astro:before-swap', ev => {
     const theme = localStorage.getItem('theme');
 
@@ -118,5 +151,19 @@ const themes = [
         }
       });
     });
+
+    const discoButton = ev.newDocument.querySelector('.disco-button');
+
+    if (discoButton) {
+      discoButton.addEventListener('click', playDisco);
+    }
   });
 </script>
+
+<style>
+  body:has(.disco-scene.playing) {
+    .disco-button img {
+      filter: brightness(3.5);
+    }
+  }
+</style>

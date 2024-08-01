@@ -47,129 +47,123 @@ const { title: pageTitle } = Astro.props;
     <!-- <Canvas /> -->
     <slot />
     <Footer />
-    <style is:global>
-      :root {
-        --white: 255, 255, 255;
-        --black: 40, 40, 40;
-
-        --green: 89, 157, 117;
-        --blue: 89, 140, 157;
-        --brown: 157, 106, 89;
-        --purple: 157, 89, 129;
-        --red: 181, 62, 66;
-        --turquoise: 62, 181, 177;
-        --gray: 85, 85, 85;
-        --gray2: 150, 150, 150;
-        --pink: 198, 13, 188;
-        --greenBright: 13, 198, 24;
-
-        --primary-light: rgba(var(--primary), 0.1);
-        --primary-lighter: rgba(var(--primary), 0.05);
-        --secondary-light: rgba(var(--secondary), 0.1);
-        --secondary-lighter: rgba(var(--secondary), 0.05);
-
-        --bg-gradient: linear-gradient(
-          var(--primary-lighter) 0%,
-          var(--primary-lighter) 30vh,
-          var(--secondary-lighter) 80vh,
-          var(--primary-lighter) 120%
-        );
-      }
-
-      * {
-        transition:
-          color 1s ease-in-out,
-          background-color 1s ease-in-out;
-      }
-
-      button:focus,
-      a:focus {
-        outline-color: rgb(var(--primary));
-      }
-
-      html[data-theme='green'] {
-        --primary: var(--green);
-        --secondary: var(--purple);
-      }
-
-      html[data-theme='purple'] {
-        --primary: var(--purple);
-        --secondary: var(--green);
-      }
-
-      html[data-theme='blue'] {
-        --primary: var(--blue);
-        --secondary: var(--brown);
-      }
-
-      html[data-theme='brown'] {
-        --primary: var(--brown);
-        --secondary: var(--blue);
-      }
-
-      html[data-theme='red'] {
-        --primary: var(--red);
-        --secondary: var(--turquoise);
-      }
-
-      html[data-theme='turquoise'] {
-        --primary: var(--turquoise);
-        --secondary: var(--red);
-      }
-
-      html[data-theme='pink'] {
-        --primary: var(--pink);
-        --secondary: var(--greenBright);
-      }
-
-      html[data-theme='gray'] {
-        --primary: var(--gray);
-        --secondary: var(--gray2);
-      }
-
-      ::-webkit-scrollbar {
-        width: 12px;
-        height: 8px;
-      }
-
-      /* Track */
-      ::-webkit-scrollbar-track {
-        background: var(--primary-light);
-      }
-
-      /* Handle */
-      ::-webkit-scrollbar-thumb {
-        background: var(--primary);
-      }
-      html {
-        @apply font-body;
-        background: rgb(var(--white));
-      }
-
-      body {
-        color: rgb(var(--black));
-        background: var(--bg-gradient);
-      }
-
-      code {
-        font-family:
-          Menlo,
-          Monaco,
-          Lucida Console,
-          Liberation Mono,
-          DejaVu Sans Mono,
-          Bitstream Vera Sans Mono,
-          Courier New,
-          monospace;
-      }
-
-      /* .text-gradient {
-    background-image: var(--text-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  } */
-    </style>
   </body>
 </html>
+
+<style is:global>
+  :root {
+    --white: 255, 255, 255;
+    --black: 40, 40, 40;
+
+    --green: 89, 157, 117;
+    --blue: 89, 140, 157;
+    --brown: 157, 106, 89;
+    --purple: 157, 89, 129;
+    --red: 181, 62, 66;
+    --turquoise: 62, 181, 177;
+    --pink: 198, 13, 188;
+    --greenBright: 13, 198, 24;
+
+    --primary-light: rgba(var(--primary), 0.1);
+    --primary-lighter: rgba(var(--primary), 0.05);
+    --secondary-light: rgba(var(--secondary), 0.1);
+    --secondary-lighter: rgba(var(--secondary), 0.05);
+
+    --bg-gradient: linear-gradient(
+      var(--primary-lighter) 0%,
+      var(--primary-lighter) 30vh,
+      var(--secondary-lighter) 80vh,
+      var(--primary-lighter) 120%
+    );
+  }
+
+  * {
+    transition:
+      color 1s ease-in-out,
+      background-color 1s ease-in-out;
+  }
+
+  button:focus,
+  a:focus {
+    outline-color: rgb(var(--primary));
+  }
+
+  html[data-theme='green'] {
+    --primary: var(--green);
+    --secondary: var(--purple);
+  }
+
+  html[data-theme='purple'] {
+    --primary: var(--purple);
+    --secondary: var(--green);
+  }
+
+  html[data-theme='blue'] {
+    --primary: var(--blue);
+    --secondary: var(--brown);
+  }
+
+  html[data-theme='brown'] {
+    --primary: var(--brown);
+    --secondary: var(--blue);
+  }
+
+  html[data-theme='red'] {
+    --primary: var(--red);
+    --secondary: var(--turquoise);
+  }
+
+  html[data-theme='turquoise'] {
+    --primary: var(--turquoise);
+    --secondary: var(--red);
+  }
+
+  html[data-theme='pink'] {
+    --primary: var(--pink);
+    --secondary: var(--greenBright);
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--primary-light);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary);
+  }
+  html {
+    @apply font-body;
+    background: rgb(var(--white));
+  }
+
+  body {
+    color: rgb(var(--black));
+    background: var(--bg-gradient);
+  }
+
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
+
+  /* .text-gradient {
+background-image: var(--text-gradient);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-size: 400%;
+background-position: 0%;
+} */
+</style>
