@@ -13,4 +13,4 @@ tags: ['TypeScript', 'Rollup', 'Chrome Extension']
 codeUrl: 'https://github.com/lmackenzie94/google-meet-time-tracker-chrome-extension'
 ---
 
-This is a handy Chrome extension that will keep track of how long you spend in Google Meet calls, making completing timesheets slightly less painful.
+This is a handy **Chrome extension** that will keep track of how long you spend in Google Meet calls, making completing timesheets slightly less painful.
