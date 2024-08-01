@@ -47,7 +47,7 @@ const tagsToShow = tags.slice(0, 3);
         {
           tagsToShow.map((tag: string, index: number) => (
             <li
-              class={`text-xxs tracking-tight font-mono rounded-full px-3 py-1 inline-block ${index % 2 === 0 ? 'bg-purple-light text-purple' : 'bg-green-light text-green'}`}
+              class={`text-xxs tracking-tight font-mono rounded-full px-3 py-1 inline-block ${index % 2 === 0 ? 'bg-secondary-light text-secondary' : 'bg-primary-light text-primary'}`}
             >
               {tag}
             </li>
@@ -120,14 +120,14 @@ const tagsToShow = tags.slice(0, 3);
         card.style.transform = `translateX(${startingPosition.x - cardRect.x}px) translateY(${startingPosition.y - cardRect.y}px) rotate(${rotation}deg)`;
       });
 
-      const delay = 180;
+      const delay = 200;
       setTimeout(() => {
         cards.forEach((card, index) => {
           setTimeout(() => {
             card.classList.add('show');
           }, index * delay);
         });
-      }, 0);
+      }, 500);
 
       setTimeout(
         () => {

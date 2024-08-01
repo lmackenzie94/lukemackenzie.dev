@@ -30,14 +30,16 @@ export default {
         },
         purple: {
           DEFAULT: 'rgb(var(--purple))',
-          light: 'rgb(var(--purple-light))',
-          faded: 'var(--purple-faded)'
+          light: 'rgb(var(--purple-light))'
         },
         green: {
           DEFAULT: 'rgb(var(--green))',
-          light: 'rgb(var(--green-light))',
-          faded: 'var(--green-faded)'
-        }
+          light: 'rgb(var(--green-light))'
+        },
+        primary: 'rgb(var(--primary))',
+        'primary-light': 'var(--primary-light)',
+        secondary: 'rgb(var(--secondary))',
+        'secondary-light': 'var(--secondary-light)'
       },
       fontSize: {
         xxs: '.65rem'

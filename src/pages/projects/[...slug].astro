@@ -42,7 +42,7 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
             liveUrl && (
               <a
                 href={liveUrl}
-                class="text-purple opacity-70 hover:opacity-100 transition-opacity"
+                class="text-secondary opacity-70 hover:opacity-100 transition-opacity"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -55,7 +55,7 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
             codeUrl && (
               <a
                 href={codeUrl}
-                class="text-green opacity-70 hover:opacity-100 transition-opacity"
+                class="text-primary opacity-70 hover:opacity-100 transition-opacity"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -68,7 +68,7 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
       </div>
 
       <div
-        class="prose prose-sm sm:prose-base prose:text-gray-600 prose-h1:mt-0 prose-a:text-purple-800 prose-headings:font-heading prose-headings:text-black prose-headings:tracking-wide"
+        class="prose prose-sm sm:prose-base prose:text-gray-600 prose-h1:mt-0 prose-a:text-secondary-800 prose-headings:font-heading prose-headings:text-black prose-headings:tracking-wide"
       >
         <h1 transition:name={`project-${title}-title`} class="text-pretty">
           {title}
@@ -80,7 +80,7 @@ const { title, tags, images, codeUrl, liveUrl } = entry.data;
         {
           tags.map((tag: string, index: number) => (
             <li
-              class={`text-xs tracking-tight font-mono rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-purple-light text-purple' : 'bg-green-light text-green'}`}
+              class={`text-xs tracking-tight font-mono rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-secondary-light text-secondary' : 'bg-primary-light text-primary'}`}
             >
               {tag}
             </li>

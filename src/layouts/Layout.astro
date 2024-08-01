@@ -47,89 +47,110 @@ const { title: pageTitle } = Astro.props;
     <!-- <Canvas /> -->
     <slot />
     <Footer />
-  </body>
-</html>
+    <style is:global>
+      :root {
+        --white: 255, 255, 255;
+        --black: 40, 40, 40;
 
-<style is:global>
-  :root {
-    --white: 255, 255, 255;
-    --black: 40, 40, 40;
+        --green: 89, 157, 117;
+        --blue: 89, 140, 157;
+        --brown: 157, 106, 89;
+        --purple: 157, 89, 129;
+        --red: 181, 62, 66;
+        --turquoise: 62, 181, 177;
 
-    --green: 89, 157, 117;
-    --green-medium: 107, 171, 134;
-    --green-light: 242, 248, 245;
-    --green-faded: rgba(var(--green), 0.2);
+        --primary-light: rgba(var(--primary), 0.1);
+        --primary-lighter: rgba(var(--primary), 0.05);
+        --secondary-light: rgba(var(--secondary), 0.1);
+        --secondary-lighter: rgba(var(--secondary), 0.05);
 
-    --purple: 157, 89, 129;
-    --purple-medium: 194, 134, 169;
-    --purple-light: 248, 242, 246;
-    --purple-faded: rgba(var(--purple), 0.15);
+        --bg-gradient: linear-gradient(
+          var(--primary-lighter) 0%,
+          var(--primary-lighter) 30vh,
+          var(--secondary-lighter) 80vh,
+          var(--primary-lighter) 120%
+        );
+      }
 
-    --bg-gradient: linear-gradient(
-      rgba(var(--accent-light), 0.6) 0%,
-      rgba(var(--accent-light), 0.5) 30vh,
-      rgba(var(--accent-inverse-light), 0.4) 80vh,
-      rgba(var(--accent-light), 1) 120%
-    );
-  }
+      * {
+        transition:
+          color 1s ease-in-out,
+          background-color 1s ease-in-out;
+      }
 
-  html[data-theme='purple'] {
-    --accent-light: var(--purple-light);
-    --accent-medium: var(--purple-medium);
-    --accent-dark: var(--purple);
-    --accent-inverse: var(--green);
-    --accent-inverse-light: var(--green-light);
-  }
+      html[data-theme='green'] {
+        --primary: var(--green);
+        --secondary: var(--purple);
+      }
 
-  html[data-theme='green'] {
-    --accent-light: var(--green-light);
-    --accent-medium: var(--green-medium);
-    --accent-dark: var(--green);
-    --accent-inverse: var(--purple);
-    --accent-inverse-light: var(--purple-light);
-  }
+      html[data-theme='purple'] {
+        --primary: var(--purple);
+        --secondary: var(--green);
+      }
 
-  ::-webkit-scrollbar {
-    width: 12px;
-    height: 8px;
-  }
+      html[data-theme='blue'] {
+        --primary: var(--blue);
+        --secondary: var(--brown);
+      }
 
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: rgb(var(--accent-light));
-  }
+      html[data-theme='brown'] {
+        --primary: var(--brown);
+        --secondary: var(--blue);
+      }
 
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgb(var(--accent-dark));
-  }
-  html {
-    @apply font-body;
-    background: rgb(var(--white));
-  }
+      html[data-theme='red'] {
+        --primary: var(--red);
+        --secondary: var(--turquoise);
+      }
 
-  body {
-    color: rgb(var(--black));
-    background: var(--bg-gradient);
-  }
+      html[data-theme='turquoise'] {
+        --primary: var(--turquoise);
+        --secondary: var(--red);
+      }
 
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
+      ::-webkit-scrollbar {
+        width: 12px;
+        height: 8px;
+      }
 
-  /* .text-gradient {
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: var(--primary-light);
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: var(--primary);
+      }
+      html {
+        @apply font-body;
+        background: rgb(var(--white));
+      }
+
+      body {
+        color: rgb(var(--black));
+        background: var(--bg-gradient);
+      }
+
+      code {
+        font-family:
+          Menlo,
+          Monaco,
+          Lucida Console,
+          Liberation Mono,
+          DejaVu Sans Mono,
+          Bitstream Vera Sans Mono,
+          Courier New,
+          monospace;
+      }
+
+      /* .text-gradient {
     background-image: var(--text-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 400%;
     background-position: 0%;
   } */
-</style>
+    </style>
+  </body>
+</html>

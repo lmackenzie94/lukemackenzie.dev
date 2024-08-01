@@ -7,10 +7,10 @@ interface Props {
 const { variant = 'purple', id } = Astro.props;
 
 const colour =
-  variant === 'purple' ? 'rgb(var(--purple))' : 'rgb(var(--green))';
+  variant === 'purple' ? 'rgb(var(--secondary))' : 'rgb(var(--primary))';
 
-const purpleClasses = 'bg-purple ring-purple';
-const greenClasses = 'bg-green ring-green';
+const purpleClasses = 'bg-secondary ring-secondary';
+const greenClasses = 'bg-primary ring-primary';
 
 const colourClasses = variant === 'purple' ? purpleClasses : greenClasses;
 ---
