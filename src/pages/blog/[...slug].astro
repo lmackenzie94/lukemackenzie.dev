@@ -19,6 +19,13 @@ const { title, publishDate, image } = entry.data;
 const formattedDate = formatDate(publishDate);
 ---
 
+<script>
+  const theme = localStorage.getItem('theme');
+  if (theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+</script>
+
 <BlogLayout title={title}>
   <article
     transition:animate="slide"

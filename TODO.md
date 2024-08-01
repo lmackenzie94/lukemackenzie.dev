@@ -1,5 +1,5 @@
 # To-Do
 
 - [ ] Auto-generate OG images
-- [ ] 🪲 Refresh on blog/project page resets theme
-- [ ] 🪲 Theme resets/flashes when switching between pages
+- [x] 🪲 Refresh on blog/project page resets theme
+- [x] 🪲 Theme resets/flashes when switching between pages

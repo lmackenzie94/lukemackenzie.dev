@@ -18,6 +18,13 @@ const { Content } = await entry.render();
 const { title, tags, images, codeUrl, liveUrl } = entry.data;
 ---
 
+<script>
+  const theme = localStorage.getItem('theme');
+  if (theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+</script>
+
 <ProjectLayout title={title}>
   <article
     transition:name={`project-${title}-card`}

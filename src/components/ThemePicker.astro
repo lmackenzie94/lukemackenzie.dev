@@ -27,22 +27,27 @@ const themes = [
   </div>
 </div>
 
+<!-- TODO: clean all this up -->
 <script>
-  function activateTheme(theme: string, trigger: 'click' | 'page-load') {
-    document.documentElement.setAttribute('data-theme', theme);
+  function activateTheme(
+    theme: string,
+    trigger: 'click' | 'page-load',
+    doc: Document = document
+  ) {
+    doc.documentElement.setAttribute('data-theme', theme);
 
-    const heroTags = document.querySelectorAll('.open-tag, .close-tag');
+    const heroTags = doc.querySelectorAll('.open-tag, .close-tag');
     heroTags?.forEach(tag => {
       tag.classList.remove('visible');
     });
 
-    const heroH1 = document.querySelector('.hero h1');
+    const heroH1 = doc.querySelector('.hero h1');
 
     if (trigger === 'click') {
       heroH1?.classList.add('underline-down');
     }
 
-    const themeButtons = document.querySelectorAll(
+    const themeButtons = doc.querySelectorAll(
       '[data-theme]'
     ) as NodeListOf<HTMLButtonElement>;
 
@@ -66,20 +71,41 @@ const themes = [
     }, 1000);
   }
 
-  document.addEventListener('astro:page-load', () => {
+  const theme = localStorage.getItem('theme');
+
+  if (theme) {
+    activateTheme(theme, 'page-load');
+  } else {
+    const activeTheme = document.documentElement.getAttribute('data-theme');
+
+    if (activeTheme) {
+      activateTheme(activeTheme, 'page-load');
+    }
+  }
+
+  const themeButtons = document.querySelectorAll(
+    'button[data-theme]'
+  ) as NodeListOf<HTMLButtonElement>;
+
+  // TODO: do this better...
+  themeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const theme = button.dataset.theme;
+      if (theme) {
+        activateTheme(theme, 'click');
+      }
+    });
+  });
+
+  document.addEventListener('astro:before-swap', ev => {
     const theme = localStorage.getItem('theme');
 
     if (theme) {
-      activateTheme(theme, 'page-load');
-    } else {
-      const activeTheme = document.documentElement.getAttribute('data-theme');
-
-      if (activeTheme) {
-        activateTheme(activeTheme, 'page-load');
-      }
+      ev.newDocument.documentElement.setAttribute('data-theme', theme);
+      activateTheme(theme, 'page-load', ev.newDocument);
     }
 
-    const themeButtons = document.querySelectorAll(
+    const themeButtons = ev.newDocument.querySelectorAll(
       'button[data-theme]'
     ) as NodeListOf<HTMLButtonElement>;
 
