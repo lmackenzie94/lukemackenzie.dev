@@ -120,7 +120,9 @@ const tagsToShow = tags.slice(0, 3);
         card.style.transform = `translateX(${startingPosition.x - cardRect.x}px) translateY(${startingPosition.y - cardRect.y}px) rotate(${rotation}deg)`;
       });
 
-      const delay = 200;
+      const totalAnomationTime = 1000;
+      const delay = totalAnomationTime / cards.length;
+
       setTimeout(() => {
         cards.forEach((card, index) => {
           setTimeout(() => {
