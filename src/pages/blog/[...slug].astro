@@ -70,8 +70,12 @@ const formattedDate = formatDate(publishDate);
     margin: 1rem 0;
   }
   .callout.success {
-    background-color: #5ea82120;
-    border-color: #5ea821;
+    background-color: var(--primary-light);
+    border-color: rgb(var(--primary));
+  }
+  .callout.info {
+    background-color: var(--secondary-light);
+    border-color: rgb(var(--secondary));
   }
   .callout.error {
     background-color: #ff000018;
@@ -80,9 +84,5 @@ const formattedDate = formatDate(publishDate);
   .callout.warn {
     background-color: #ffcc0020;
     border-color: #ffcc00;
-  }
-  .callout.info {
-    background-color: #0088ff18;
-    border-color: #0088ff;
   }
 </style>

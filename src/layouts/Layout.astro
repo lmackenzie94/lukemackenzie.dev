@@ -78,6 +78,11 @@ const { title: pageTitle } = Astro.props;
           background-color 1s ease-in-out;
       }
 
+      button:focus,
+      a:focus {
+        outline-color: rgb(var(--primary));
+      }
+
       html[data-theme='green'] {
         --primary: var(--green);
         --secondary: var(--purple);

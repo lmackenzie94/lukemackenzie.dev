@@ -1,5 +1,5 @@
 ---
-import { siteDescription, siteTitle, socials } from '../constants';
+import { siteDescription, siteTitle } from '../constants';
 import Socials from './Socials.astro';
 ---
 
@@ -13,29 +13,8 @@ import Socials from './Socials.astro';
   </a>
   <Socials />
   <p
-    class="text-xs sm:text-sm lg:text-base text-black opacity-60 font-mono tracking-tight order-2 sm:order-none mt-1 sm:mt-0"
+    class="text-xs sm:text-sm lg:text-base text-black opacity-70 font-mono tracking-tight order-2 sm:order-none mt-1 sm:mt-0"
   >
     {siteDescription}
   </p>
 </header>
-
-<!-- <style>
-  .site-title::after {
-    content: '';
-    display: block;
-    width: 106%;
-    left: -3%;
-    height: 12%;
-    bottom: 16%;
-    background: #5ea821;
-    position: absolute;
-    mix-blend-mode: plus-lighter;
-    border-radius: 0.1em;
-  }
-
-  @media screen(sm) {
-    .site-title::after {
-      bottom: 14%;
-    }
-  }
-</style> -->

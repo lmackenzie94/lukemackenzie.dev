@@ -3,6 +3,7 @@ import Layout from '@layouts/Layout.astro';
 import Hero from '@components/Hero.astro';
 import ProjectList from '@components/ProjectList.astro';
 import BlogList from '@components/BlogList.astro';
+import ThemePicker from '@components/ThemePicker.astro';
 
 const themes: string[] = [
   'green',
@@ -14,70 +15,9 @@ const themes: string[] = [
 ];
 ---
 
-<script>
-  function activateTheme(theme: string) {
-    document.documentElement.setAttribute('data-theme', theme);
-    const themeButtons = document.querySelectorAll(
-      '[data-theme]'
-    ) as NodeListOf<HTMLButtonElement>;
-
-    themeButtons.forEach(button => {
-      button.classList.remove('ring-black');
-      button.classList.add('ring-transparent');
-
-      if (button.dataset.theme === theme) {
-        button.classList.remove('ring-transparent');
-        button.classList.add('ring-black');
-      }
-    });
-
-    localStorage.setItem('theme', theme);
-  }
-
-  document.addEventListener('astro:page-load', () => {
-    const theme = localStorage.getItem('theme');
-    if (theme) {
-      activateTheme(theme);
-    } else {
-      const activeTheme = document.documentElement.getAttribute('data-theme');
-      if (activeTheme) {
-        activateTheme(activeTheme);
-      }
-    }
-
-    const themeButtons = document.querySelectorAll(
-      '[data-theme]'
-    ) as NodeListOf<HTMLButtonElement>;
-
-    // TODO: do this better...
-    themeButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const theme = button.dataset.theme!;
-        activateTheme(theme);
-      });
-    });
-  });
-</script>
-
 <Layout>
-  <div class="absolute top-3 left-1/2 transform -translate-x-1/2 z-20">
-    <!-- theme picker -->
-    <div class="flex flex-wrap gap-2 items-center">
-      {
-        themes.map(theme => (
-          <button
-            style={`background-color: rgb(var(--${theme}));`}
-            class={`rounded-full w-5 h-5 cursor-pointer ring-1 ring-transparent ring-offset-1`}
-            data-theme={theme}
-            aria-label={`Switch to ${theme} theme`}
-          />
-        ))
-      }
-    </div>
-  </div>
-
+  <ThemePicker />
   <Hero />
-
   <main class="container z-10 flex-1">
     <ProjectList />
     <BlogList />
