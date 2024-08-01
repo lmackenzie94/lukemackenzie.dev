@@ -22,42 +22,39 @@ const formattedDate = formatDate(publishDate);
 <BlogLayout title={title}>
   <article
     transition:animate="slide"
-    class="bg-white border border-gray-200 rounded-2xl shadow-lg shadow-neutral-200/50 overflow-hidden relative"
+    class="bg-white border border-gray-200 rounded-2xl shadow-lg shadow-neutral-200/50 overflow-hidden relative p-2 sm:p-4"
   >
-    <div class="p-6 md:p-8">
-      <Image
-        src={image.src}
-        alt={image.alt}
-        format="webp"
-        class="w-full aspect-[3/1] object-cover object-top rounded-t-2xl mb-2 sm:mb-4"
-        widths={[800, 1200, 1600]}
-      />
-      <div class="mb-8">
-        {
-          headings.map((heading, index) => (
-            <a
-              href={`#${heading.slug}`}
-              class={`text-xxs font-mono rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-secondary-light text-secondary' : 'bg-primary-light text-primary'}`}
-            >
-              <span class="text-gray-400">#</span>
-              {heading.text}
-            </a>
-          ))
-        }
-      </div>
+    <Image
+      src={image.src}
+      alt={image.alt}
+      format="webp"
+      class="w-full aspect-[3/1] object-cover object-top rounded-xl"
+      widths={[800, 1200, 1600]}
+    />
+    <div
+      class="p-3 md:p-6 prose prose-sm sm:prose-base prose:text-gray-600 prose-h1:mb-0 prose-a:text-secondary prose-headings:font-heading prose-headings:text-black prose-headings:tracking-wide max-w-[70ch] mx-auto prose-a:no-underline"
+    >
+      <h1 class="text-pretty">
+        {title}
+      </h1>
 
-      <div
-        class="prose prose-sm sm:prose-base prose:text-gray-600 prose-h1:mb-0 prose-a:text-secondary prose-headings:font-heading prose-headings:text-black prose-headings:tracking-wide"
+      <time
+        class="block text-xs text-gray-400 font-mono mt-2 mb-4"
+        datetime={formattedDate}>{formattedDate}</time
       >
-        <h1 class="text-pretty">
-          {title}
-        </h1>
+      {
+        headings.map((heading, index) => (
+          <a
+            href={`#${heading.slug}`}
+            class={`text-xxs font-mono rounded-full px-3 py-1 mr-1 mt-1 inline-block ${index % 2 === 0 ? 'bg-secondary-light !text-secondary' : 'bg-primary-light !text-primary'}`}
+          >
+            <span class="text-gray-400">#</span>
+            {heading.text}
+          </a>
+        ))
+      }
 
-        <time class="text-xs text-gray-400 font-mono" datetime={formattedDate}
-          >{formattedDate}</time
-        >
-        <Content />
-      </div>
+      <Content />
     </div>
   </article>
 </BlogLayout>
