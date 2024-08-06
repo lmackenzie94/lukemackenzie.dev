@@ -4,7 +4,7 @@ import discoBall from '@assets/disco-ball-no-sparkles.svg';
 const themes = ['green', 'purple', 'blue', 'brown', 'red', 'turquoise', 'pink'];
 ---
 
-<div class="absolute top-2 w-full z-20">
+<div id="theme-picker" class="absolute top-2 w-full z-20">
   <div class="flex flex-wrap gap-2 justify-center items-center">
     {
       themes.map(theme => (
@@ -167,3 +167,11 @@ const themes = ['green', 'purple', 'blue', 'brown', 'red', 'turquoise', 'pink'];
     }
   }
 </style>
+
+<noscript>
+  <style>
+    #theme-picker {
+      display: none;
+    }
+  </style>
+</noscript>

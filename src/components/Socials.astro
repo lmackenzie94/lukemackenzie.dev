@@ -2,7 +2,7 @@
 import { socials } from '../constants';
 ---
 
-<ul transition:name="socials" class="flex gap-1">
+<ul transition:name="socials" class="flex gap-1 sm:mb-2">
   {
     socials.map(social => (
       <li>
@@ -10,11 +10,11 @@ import { socials } from '../constants';
           href={social.url}
           target="_blank"
           rel="noopener noreferrer"
-          class="group"
+          class="w-10 h-10 flex justify-center items-center"
         >
           <p class="sr-only">{social.name}</p>
           <i
-            class={`${social.icon} text-2xl text-secondary opacity-70 hover:opacity-90 group-focus:opacity-60 transition-opacity w-10 h-10 flex items-center justify-center`}
+            class={`${social.icon} text-2xl text-secondary opacity-70 hover:opacity-90 focus:opacity-60 transition-opacity`}
           />
         </a>
       </li>
