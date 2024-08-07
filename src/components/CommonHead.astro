@@ -1,6 +1,7 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 import { siteDescription, siteTitle, siteUrl } from 'src/constants';
+import GoogleAnalytics from './GoogleAnalytics.astro';
 
 const { pageTitle } = Astro.props;
 const metaTitle = `${siteTitle} | ${pageTitle || siteDescription}`;
@@ -9,6 +10,8 @@ const metaDescription =
 ---
 
 <head>
+  <GoogleAnalytics />
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
   <title>{siteTitle} | {pageTitle || siteDescription}</title>
