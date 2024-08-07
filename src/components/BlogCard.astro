@@ -4,6 +4,7 @@ import { formatDate } from '@utils/index';
 
 const { blog } = Astro.props;
 const { title, image, publishDate } = blog.data;
+const { remarkPluginFrontmatter } = await blog.render();
 
 const formattedDate = formatDate(publishDate);
 ---
@@ -20,14 +21,21 @@ const formattedDate = formatDate(publishDate);
   data-tilt-max-glare="0.3"
 >
   <article class="flex flex-col overflow-hidden h-full">
-    <Image
-      src={image.src}
-      alt={image.alt}
-      format="webp"
-      class="shrink-0 aspect-[2/1] border-b border-gray-100 object-cover object-top opacity-100 lg:opacity-75 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 overflow-hidden"
-      widths={[800, 1200, 1600]}
-      loading="eager"
-    />
+    <div class="relative">
+      <Image
+        src={image.src}
+        alt={image.alt}
+        format="webp"
+        class="shrink-0 aspect-[2/1] border-b border-gray-100 object-cover object-top opacity-100 lg:opacity-75 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 overflow-hidden"
+        widths={[800, 1200, 1600]}
+        loading="eager"
+      />
+      <p
+        class="absolute top-2 right-2 text-xxs font-mono rounded-full px-2 py-1 bg-white text-black"
+      >
+        {remarkPluginFrontmatter.minutesRead}
+      </p>
+    </div>
 
     <div
       class="flex flex-col justify-center shrink-1 p-4 bg-white h-full text-center shadow-[0_-5px_20px_0_rgba(0,0,0,0.1)] group-hover:shadow-none group-focus:shadow-none transition-shadow duration-500"
