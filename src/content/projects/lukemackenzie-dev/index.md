@@ -12,7 +12,7 @@ images:
       alt: 'lukemackenzie.dev home page with disco scene activated'
     }
   ]
-tags: ['Astro', 'Tailwind', 'Markdown', 'TypeScript']
+tags: ['Astro', 'Tailwind', 'Markdown', 'TypeScript', 'PostHog', 'Sentry']
 codeUrl: 'https://github.com/lmackenzie94/lukemackenzie.dev'
 ---
 
