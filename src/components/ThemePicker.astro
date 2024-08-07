@@ -112,6 +112,9 @@ const themes = ['green', 'purple', 'blue', 'brown', 'red', 'turquoise', 'pink'];
       } else {
         discoScene.classList.add('playing');
         discoAudio.play();
+        // @ts-ignore
+        window.posthog.capture('play_disco');
+
         discoTimer = setTimeout(() => {
           discoScene.classList.remove('playing');
           discoAudio.pause();

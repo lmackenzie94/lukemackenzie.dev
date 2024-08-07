@@ -6,6 +6,7 @@
 - TypeScript
 - Google Analytics
   - added with \*Partytown\*\*
+- PostHog (via [Web snippet](https://us.posthog.com/project/70017/settings/project#snippet))
 
 **\*Partytown**
 
