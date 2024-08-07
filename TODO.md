@@ -6,3 +6,4 @@
 - [ ] Store social icons locally
 - [ ] Add [Plausible Analytics](https://plausible.io/)
 - [ ] Add [Sentry](https://sentry.io/)
+- [ ] 🪲 Stop disco scene on page change
