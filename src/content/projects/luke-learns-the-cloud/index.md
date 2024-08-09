@@ -2,7 +2,7 @@
 title: 'Luke Learns The Cloud ☁️'
 publishDate: 2024-08-08
 images: [{ src: './image-1.png', alt: 'Luke Learns The Cloud home page.' }]
-tags: ['AWS S3', 'CloudFront', 'Route 53']
+tags: ['AWS S3', 'CloudFront', 'Route 53', 'Vite']
 liveUrl: 'https://lukelearnsthe.cloud'
 ---
 
