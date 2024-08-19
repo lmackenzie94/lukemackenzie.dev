@@ -7,9 +7,10 @@
 - Google Analytics
   - added with _Partytown_
 - PostHog (via [Web snippet](https://us.posthog.com/project/70017/settings/project#snippet))
+- Plausible Analytics
 - Sentry
 
-**\*Partytown**
+**Partytown**
 
 - a lazy-loaded library to help relocate resource intensive scripts into a web worker, and off of the main thread.
 - if you’re using third-party scripts for things like analytics or ads, Partytown is a great way to make sure that they don’t slow down your site.
@@ -23,3 +24,7 @@
 
 - a developer-first error tracking and performance monitoring platform
 - added via [Astro integration](https://docs.sentry.io/platforms/javascript/guides/astro/)
+
+**Plausible Analytics**
+
+- is an easy to use, open source, lightweight (< 1 KB) and privacy-friendly alternative to Google Analytics.
