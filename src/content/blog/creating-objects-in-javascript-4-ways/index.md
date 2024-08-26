@@ -69,7 +69,7 @@ This covers points 1, 2, and 3 of the list above, so let’s dig into number 4 a
 
 To reiterate the point, whenever we use the new keyword to create an object, that object automatically gets a `__proto__` property. This `__proto__` property simply links our new object to the prototype of the constructor function, giving us access to any properties and methods that live on that prototype.
 
-<div class="callout success">
+<div class="callout primary">
   <strong>WHAT'S A PROTOTYPE?</strong>
   Prototypes are the mechanism by which JavaScript objects inherit features from one another. Every function has a `prototype` property that starts as an empty object and is never used unless the function is used as a constructor. An important distinction to remember is that the prototype property on a function holds the prototype used for instances created through it. The actual prototype of the constructor function is Function.prototype since, after all, it's just a function.
 </div>
