@@ -7,7 +7,7 @@ images:
     { src: './image-2.png', alt: 'Lukewise Daily Review page.' },
     { src: './image-3.png', alt: 'Lukewise "My Content" page.' }
   ]
-tags: ['Next.js', 'Turso', 'Drizzle', 'TypeScript', 'Tailwind']
+tags: ['Next.js', 'Turso', 'Drizzle', 'OpenAI API', 'TypeScript', 'Tailwind']
 codeUrl: 'https://github.com/lmackenzie94/Lukewise'
 liveUrl: 'https://lukewise.vercel.app/'
 ---
