@@ -34,9 +34,13 @@ const isExternal = !!externalUrl;
         loading="eager"
       />
       <div class="absolute flex gap-1 top-2 right-2 text-xxs font-mono">
-        <p class="rounded-full px-2 py-1 bg-white text-black">
-          {remarkPluginFrontmatter.minutesRead}
-        </p>
+        {
+          !isExternal && (
+            <p class="rounded-full px-2 py-1 bg-white text-black">
+              {remarkPluginFrontmatter.minutesRead}
+            </p>
+          )
+        }
         {
           isExternal && (
             <i
