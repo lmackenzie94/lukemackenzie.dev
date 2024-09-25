@@ -31,7 +31,8 @@ const blog = defineCollection({
       image: z.object({
         src: image(),
         alt: z.string()
-      })
+      }),
+      externalUrl: z.string().optional()
       // Reference an array of related posts from the `blog` collection by `slug`
       // relatedPosts: z.array(reference('blog'))
     })

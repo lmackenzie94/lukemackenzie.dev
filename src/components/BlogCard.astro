@@ -3,14 +3,17 @@ import { Image } from 'astro:assets';
 import { formatDate } from '@utils/index';
 
 const { blog } = Astro.props;
-const { title, image, publishDate } = blog.data;
+const { title, image, publishDate, externalUrl } = blog.data;
 const { remarkPluginFrontmatter } = await blog.render();
 
 const formattedDate = formatDate(publishDate);
+
+const isExternal = !!externalUrl;
 ---
 
 <a
-  href={`/blog/${blog.slug}`}
+  href={`${isExternal ? externalUrl : `/blog/${blog.slug}`}`}
+  target={isExternal ? '_blank' : '_self'}
   class="card blog-card block group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-shadow duration-500 shadow-md shadow-neutral-200/30 hover:shadow-neutral-200/70 hover:shadow-lg hover:border-gray-300"
   data-tilt
   data-tilt-max="5"
@@ -30,11 +33,19 @@ const formattedDate = formatDate(publishDate);
         widths={[800, 1200, 1600]}
         loading="eager"
       />
-      <p
-        class="absolute top-2 right-2 text-xxs font-mono rounded-full px-2 py-1 bg-white text-black"
-      >
-        {remarkPluginFrontmatter.minutesRead}
-      </p>
+      <div class="absolute flex gap-1 top-2 right-2 text-xxs font-mono">
+        <p class="rounded-full px-2 py-1 bg-white text-black">
+          {remarkPluginFrontmatter.minutesRead}
+        </p>
+        {
+          isExternal && (
+            <i
+              class="fa-solid fa-arrow-up-right-from-square text-sm bg-black text-white rounded-full w-6 h-6 p-2 flex items-center justify-center"
+              aria-hidden="true"
+            />
+          )
+        }
+      </div>
     </div>
 
     <div
