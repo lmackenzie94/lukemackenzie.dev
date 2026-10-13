@@ -1,7 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import { siteDescription, siteTitle, siteUrl } from 'src/constants';
-import PostHog from './analytics/PostHog.astro';
 
 const { pageTitle } = Astro.props;
 const metaTitle = `${siteTitle} | ${pageTitle || siteDescription}`;
@@ -35,12 +34,6 @@ const ogImageUrl = new URL('/og-image.jpg', siteUrl).href;
       }
     })();
   </script>
-
-  <PostHog />
-  <script
-    defer
-    data-domain="lukemackenzie.dev"
-    src="https://plausible.io/js/script.js"></script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />

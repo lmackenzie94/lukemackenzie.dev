@@ -4,8 +4,7 @@
 - Tailwind CSS
 - Markdown
 - TypeScript
-- PostHog (via [Web snippet](https://us.posthog.com/project/70017/settings/project#snippet))
-- Plausible Analytics
+- Vercel Web Analytics
 - Sentry
 
 **Sentry**
@@ -14,6 +13,8 @@
 - added via [Astro integration](https://docs.sentry.io/platforms/javascript/guides/astro/)
 - runtime config (DSN, error filtering, replays) lives in `sentry.client.config.ts`; only reports from the production domain
 
-**Plausible Analytics**
+**Vercel Web Analytics**
 
-- is an easy to use, open source, lightweight (< 1 KB) and privacy-friendly alternative to Google Analytics.
+- cookieless page view + referrer tracking via `@vercel/analytics` (`<Analytics />` in `Layout.astro`)
+- tracks client-side (`<ClientRouter />`) navigations too
+- must be enabled in the Vercel project's Analytics tab; only collects on Vercel deployments
