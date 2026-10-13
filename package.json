@@ -10,7 +10,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.20",
+    "@types/three": "^0.166.0",
     "sharp": "^0.35.5"
   }
 }

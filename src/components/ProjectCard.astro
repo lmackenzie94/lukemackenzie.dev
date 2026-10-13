@@ -100,9 +100,13 @@ const tagsToShow = tags.slice(0, 3);
     () => {
       window.doneCardAnimation = true;
 
-      const cards = Array.from(document.querySelectorAll('.project-card'));
+      const cards = Array.from(
+        document.querySelectorAll<HTMLElement>('.project-card')
+      );
 
       const projectsHeading = document.querySelector('#projects-heading');
+      if (!projectsHeading || cards.length === 0) return;
+
       const projectsHeadingRect = projectsHeading.getBoundingClientRect();
 
       const startingPosition = {
@@ -133,7 +137,7 @@ const tagsToShow = tags.slice(0, 3);
 
       setTimeout(
         () => {
-          cards.reverse().forEach((card: HTMLDivElement, index: number) => {
+          cards.reverse().forEach((card, index) => {
             setTimeout(() => {
               card.style.transform = `translateX(0) translateY(0) rotate(0deg)`;
 
