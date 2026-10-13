@@ -1,10 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-import { formatDate } from '@utils/index';
+import { formatDate, getReadingTime } from '@utils/index';
 
 const { blog } = Astro.props;
 const { title, image, publishDate, externalUrl } = blog.data;
-const { remarkPluginFrontmatter } = await blog.render();
+const minutesRead = getReadingTime(blog.body);
 
 const formattedDate = formatDate(publishDate);
 
@@ -12,7 +12,7 @@ const isExternal = !!externalUrl;
 ---
 
 <a
-  href={`${isExternal ? externalUrl : `/blog/${blog.slug}`}`}
+  href={`${isExternal ? externalUrl : `/blog/${blog.id}`}`}
   target={isExternal ? '_blank' : '_self'}
   class="card blog-card block group mx-auto max-w-lg bg-white border border-gray-200 rounded-2xl overflow-hidden transition-shadow duration-500 shadow-md shadow-neutral-200/30 hover:shadow-neutral-200/70 hover:shadow-lg hover:border-gray-300"
   data-tilt
@@ -29,7 +29,7 @@ const isExternal = !!externalUrl;
         src={image.src}
         alt={image.alt}
         format="webp"
-        class="shrink-0 aspect-[2/1] border-b border-gray-100 object-cover object-top opacity-100 lg:opacity-75 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 overflow-hidden"
+        class="shrink-0 aspect-2/1 border-b border-gray-100 object-cover object-top opacity-100 lg:opacity-75 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-500 overflow-hidden"
         widths={[800, 1200, 1600]}
         loading="eager"
       />
@@ -37,7 +37,7 @@ const isExternal = !!externalUrl;
         {
           !isExternal && (
             <p class="rounded-full px-2 py-1 bg-white text-black">
-              {remarkPluginFrontmatter.minutesRead}
+              {minutesRead}
             </p>
           )
         }
@@ -53,7 +53,7 @@ const isExternal = !!externalUrl;
     </div>
 
     <div
-      class="flex flex-col justify-center shrink-1 p-4 bg-white h-full text-center shadow-[0_-5px_20px_0_rgba(0,0,0,0.1)] group-hover:shadow-none group-focus:shadow-none transition-shadow duration-500"
+      class="flex flex-col justify-center shrink p-4 bg-white h-full text-center shadow-[0_-5px_20px_0_rgba(0,0,0,0.1)] group-hover:shadow-none group-focus:shadow-none transition-shadow duration-500"
     >
       <time class="text-xxs text-gray-400 font-mono" datetime={formattedDate}
         >{formattedDate}</time

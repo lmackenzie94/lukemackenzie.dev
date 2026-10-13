@@ -8,6 +8,8 @@ import '@fontsource/lilita-one';
 import '@fontsource-variable/open-sans'; // Supports weights 300-800
 
 import CommonHead from '@components/CommonHead.astro';
+import Analytics from '@vercel/analytics/astro';
+import '../styles/global.css';
 
 interface Props {
   title?: string;
@@ -47,6 +49,7 @@ const { title: pageTitle } = Astro.props;
     <!-- <Canvas /> -->
     <slot />
     <Footer />
+    <Analytics />
   </body>
 </html>
 
@@ -138,7 +141,7 @@ const { title: pageTitle } = Astro.props;
     background: rgb(var(--primary));
   }
   html {
-    @apply font-body;
+    font-family: var(--font-body);
     background: rgb(var(--white));
   }
 

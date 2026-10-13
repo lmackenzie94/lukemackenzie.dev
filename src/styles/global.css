@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --font-display: 'Caprasimo', sans-serif;
+  --font-mono: 'Roboto Mono Variable', monospace;
+  --font-heading: 'Lilita One', sans-serif;
+  --font-body: 'Open Sans Variable', sans-serif;
+
+  /* theme colours are driven by the runtime CSS variables in Layout.astro */
+  --color-white: rgb(var(--white));
+  --color-black: rgb(var(--black));
+  --color-purple: rgb(var(--purple));
+  --color-purple-light: rgb(var(--purple-light));
+  --color-green: rgb(var(--green));
+  --color-green-light: rgb(var(--green-light));
+  --color-primary: rgb(var(--primary));
+  --color-primary-light: var(--primary-light);
+  --color-secondary: rgb(var(--secondary));
+  --color-secondary-light: var(--secondary-light);
+
+  --text-xxs: 0.65rem;
+
+  --animate-flash: flash 1s ease-in-out infinite;
+
+  @keyframes flash {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.1;
+    }
+  }
+}
+
+/* v4 dropped the `container.center` / `container.padding` config options */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @variant sm {
+    padding-inline: 2rem;
+  }
+  @variant lg {
+    padding-inline: 3rem;
+  }
+  @variant xl {
+    padding-inline: 4rem;
+  }
+}
+
+/* keep Tailwind v3 defaults that v4 changed */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}

@@ -1,7 +1,10 @@
-import { z, defineCollection, reference } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
+// folders/files prefixed with `_` are drafts and are ignored by the glob loader
 const projects = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/[^_]*/index.md', base: './src/content/projects' }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -9,9 +12,6 @@ const projects = defineCollection({
       images: z.array(
         z.object({
           src: image(),
-          // src: image().refine(src => src.width >= 1000, {
-          //   message: 'Image width must be at least 1000px'
-          // }),
           objectFit: z.enum(['cover', 'contain']).default('cover'),
           alt: z.string()
         })
@@ -23,7 +23,7 @@ const projects = defineCollection({
 });
 
 const blog = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/[^_]*/index.md', base: './src/content/blog' }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -33,8 +33,6 @@ const blog = defineCollection({
         alt: z.string()
       }),
       externalUrl: z.string().optional()
-      // Reference an array of related posts from the `blog` collection by `slug`
-      // relatedPosts: z.array(reference('blog'))
     })
 });
 

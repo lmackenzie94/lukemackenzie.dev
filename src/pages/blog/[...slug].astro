@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BlogLayout from '@layouts/BlogLayout.astro';
 import { Image } from 'astro:assets';
 import { formatDate } from '@utils/index.ts';
@@ -8,12 +8,12 @@ export async function getStaticPaths() {
   const blogs = await getCollection('blog');
 
   return blogs.map(entry => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry }
   }));
 }
 const { entry } = Astro.props;
-const { Content, headings } = await entry.render();
+const { Content, headings } = await render(entry);
 
 const { title, publishDate, image } = entry.data;
 const formattedDate = formatDate(publishDate);
@@ -28,7 +28,7 @@ const formattedDate = formatDate(publishDate);
       src={image.src}
       alt={image.alt}
       format="webp"
-      class="w-full aspect-[3/1] object-cover object-top rounded-xl"
+      class="w-full aspect-3/1 object-cover object-top rounded-xl"
       widths={[800, 1200, 1600]}
     />
     <div
