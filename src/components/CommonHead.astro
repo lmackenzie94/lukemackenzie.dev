@@ -7,10 +7,36 @@ import PostHog from './analytics/PostHog.astro';
 const { pageTitle } = Astro.props;
 const metaTitle = `${siteTitle} | ${pageTitle || siteDescription}`;
 const metaDescription =
-  "Hey, I'm Luke! 👋 I'm a Toronto-based front-end web developer with 4+ years of experience seeking full-time employment.";
+  "Hey, I'm Luke! 👋 I'm a Toronto-based web developer building fun, fast sites and exploring what's possible with AI.";
+
+// social scrapers (LinkedIn, Slack, etc.) need absolute URLs
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImageUrl = new URL('/og-image.jpg', siteUrl).href;
 ---
 
 <head>
+  <!-- restore the saved theme before first paint to avoid a flash of the default theme -->
+  <script is:inline>
+    (function () {
+      function applySavedTheme(doc) {
+        try {
+          var theme = localStorage.getItem('theme');
+          if (theme) doc.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      }
+
+      applySavedTheme(document);
+
+      // inline head scripts don't re-run on view transitions, so register once
+      if (!window.__themeSwapListener) {
+        window.__themeSwapListener = true;
+        document.addEventListener('astro:before-swap', function (event) {
+          applySavedTheme(event.newDocument);
+        });
+      }
+    })();
+  </script>
+
   <GoogleAnalytics />
   <PostHog />
   <script
@@ -22,21 +48,22 @@ const metaDescription =
   <meta name="viewport" content="width=device-width" />
   <title>{siteTitle} | {pageTitle || siteDescription}</title>
   <meta name="description" content={metaDescription} />
+  <link rel="canonical" href={canonicalUrl} />
 
   <!-- Facebook Meta Tags -->
-  <meta property="og:url" content={siteUrl} />
+  <meta property="og:url" content={canonicalUrl} />
   <meta property="og:type" content="website" />
   <meta property="og:title" content={metaTitle} />
   <meta property="og:description" content={metaDescription} />
-  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:image" content={ogImageUrl} />
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="twitter:domain" content="lukemackenzie.dev" />
-  <meta property="twitter:url" content={siteUrl} />
+  <meta property="twitter:url" content={canonicalUrl} />
   <meta name="twitter:title" content={metaTitle} />
   <meta name="twitter:description" content={metaDescription} />
-  <meta name="twitter:image" content="/og-image.jpg" />
+  <meta name="twitter:image" content={ogImageUrl} />
 
   <link
     rel="icon"
