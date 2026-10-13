@@ -1,14 +1,32 @@
-<button class="hidden text-base text-gray-600 mb-2 font-mono sm:block">
+<a
+  href="/"
+  data-back-button
+  class="hidden text-base text-gray-600 mb-2 font-mono sm:inline-block"
+>
   <i class="fa-solid fa-arrow-left"></i> Go back
-</button>
+</a>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
-    const handleClick = () => {
-      history.back();
-    };
+  // Tracks whether the visitor has navigated within the site this session.
+  // With view transitions, document.referrer doesn't update on client-side
+  // navigations, so we flag it ourselves.
+  let hasInternalHistory = document.referrer.startsWith(location.origin);
 
-    const button = document.querySelector('button');
-    button?.addEventListener('click', handleClick);
+  document.addEventListener('astro:after-swap', () => {
+    hasInternalHistory = true;
+  });
+
+  document.addEventListener('astro:page-load', () => {
+    const backButton = document.querySelector('[data-back-button]');
+    if (!backButton) return;
+
+    backButton.addEventListener('click', event => {
+      // No previous page on this site (e.g. landed here from LinkedIn):
+      // let the link do its default thing and go to the homepage.
+      if (!hasInternalHistory) return;
+
+      event.preventDefault();
+      history.back();
+    });
   });
 </script>
