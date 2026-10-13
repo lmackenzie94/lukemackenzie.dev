@@ -5,7 +5,7 @@ import { siteDescription, siteTitle, siteUrl } from 'src/constants';
 const { pageTitle } = Astro.props;
 const metaTitle = `${siteTitle} | ${pageTitle || siteDescription}`;
 const metaDescription =
-  "Hey, I'm Luke! 👋 I'm a Toronto-based web developer building fun, fast sites and exploring what's possible with AI.";
+  "Hey, I'm Luke! 👋 I'm a Toronto-based web developer who builds fast, playful sites and explores what's possible with AI. Check out my projects and notes.";
 
 // social scrapers (LinkedIn, Slack, etc.) need absolute URLs
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
