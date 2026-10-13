@@ -1,7 +1,6 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import { siteDescription, siteTitle, siteUrl } from 'src/constants';
-import GoogleAnalytics from './analytics/GoogleAnalytics.astro';
 import PostHog from './analytics/PostHog.astro';
 
 const { pageTitle } = Astro.props;
@@ -37,7 +36,6 @@ const ogImageUrl = new URL('/og-image.jpg', siteUrl).href;
     })();
   </script>
 
-  <GoogleAnalytics />
   <PostHog />
   <script
     defer
@@ -77,5 +75,5 @@ const ogImageUrl = new URL('/og-image.jpg', siteUrl).href;
     src="https://kit.fontawesome.com/255fae0f13.js"
     crossorigin="anonymous"></script>
 
-  <ViewTransitions fallback="swap" />
+  <ClientRouter fallback="swap" />
 </head>
