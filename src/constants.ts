@@ -1,6 +1,7 @@
 export const siteTitle = 'Luke MacKenzie';
 export const siteDescription = 'Web Developer. Toronto.';
-export const siteUrl = 'https://lukemackenzie.dev';
+// www is the primary domain on Vercel (apex 308-redirects to it), so canonical URLs use www
+export const siteUrl = 'https://www.lukemackenzie.dev';
 
 export const socials = [
   {
