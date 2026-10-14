@@ -80,10 +80,13 @@ const { title: pageTitle } = Astro.props;
     );
   }
 
-  * {
-    transition:
-      color 1s ease-in-out,
-      background-color 1s ease-in-out;
+  /* layered so Tailwind's transition-* utilities can still override it */
+  @layer base {
+    * {
+      transition:
+        color 1s ease-in-out,
+        background-color 1s ease-in-out;
+    }
   }
 
   button:focus,
